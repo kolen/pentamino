@@ -21,7 +21,6 @@ FilePath::FilePath()
       std::string s = *i;
       s += "img/shapes.png";
       std::ifstream f(s.c_str());
-      std::cerr << "Looking path: " << s << std::endl;
       if (f)
         {
           prefix = *i;
