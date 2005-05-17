@@ -25,6 +25,8 @@ Main::Main()
   //Test
   ShellInterpreter interp;
 
+  interp.execCode("set a {b c\n d}\n set b oo");
+
   mainLoop();
   
   return;

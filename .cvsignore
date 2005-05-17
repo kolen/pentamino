@@ -1,1 +1,6 @@
 Makefile
+.tm_project.cache
+autom4te.cache
+config.log
+config.status
+penta.pws
