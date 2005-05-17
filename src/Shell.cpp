@@ -1,3 +1,4 @@
+//$id$
 #include "Shell.h"
 #include <iostream>
 #include <ctype.h>
@@ -25,10 +26,16 @@ ShellInterpreter::execCode(string commands)
     {
       if (c == '\n')
 	{
-          cur_arg = "";
-	  doCommand(args);
-	  args.clear();
-          state = S_WAIT_NBLANK;
+          if (state == S_BRACKET) {
+            cur_arg += c;
+          }              
+          else 
+          {  
+            cur_arg = "";
+	    doCommand(args);
+	    args.clear();
+            state = S_WAIT_NBLANK;
+          }
 	}
       else if (isspace(c))
 	{
@@ -55,11 +62,12 @@ ShellInterpreter::execCode(string commands)
 	      args.push_back(cur_arg);
 	      cur_arg = "";
 	      state = S_BRACKET;
+              depth = 1;
 	    }
 	  else if (state == S_WAIT_NBLANK)
 	    {
 	      state = S_BRACKET;
-	      cur_arg+=c;
+              depth = 1;
 	    }
 	}
       else if (c == '}')
@@ -90,6 +98,10 @@ ShellInterpreter::execCode(string commands)
 	      state = S_WORD;
               strm.unget();
 	    }
+          else if (state == S_BRACKET)
+            {
+              cur_arg += c;
+            }
 	  else if (state != S_ERROR)
 	    {
 	      cur_arg+=c;
@@ -145,12 +157,14 @@ ShellInterpreter::ShellInterpreter()
 int
 ShellInterpreter::onCommand(int cmdId, string &command, list<string> &args)
 {
+  list<string>::iterator it;
   switch(cmdId)
     {
     case CMD_set:
-      string varname = *(args.begin());
-      string varvalue = *(args.begin()++);
+      cerr << args.size();
+      it = args.begin();
+      string varname = *it;
+      string varvalue = *(++it);
       vars[varname] = varvalue;
-      cerr << "Var: " << varname <<" = " <<varvalue <<endl;
     }
 }
