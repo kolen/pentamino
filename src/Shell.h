@@ -10,14 +10,7 @@
 class ShellUser
 {
 public:
-  virtual int onCommand(std::string &command, std::list<std::string> &args);
-};
-
-class ShellGlobals
-{
- public:
-  std::map<std::string, std::string> aliases;
-  std::map<std::string, std::string> binds;
+  virtual int onCommand(int cmdId, std::string &command, std::list<std::string> &args);
 };
 
 
@@ -30,12 +23,16 @@ class ShellInterpreter
   ShellInterpreter();
   
   void execCode(std::string input);
-  void addShellUser(ShellUser *user);
+  void registerCommand(ShellUser *object, std::string cmd, int cmdId);
+ 
   ShellGlobals globals;
+ 
+  struct cmdEntry{int cmdId; ShellUser *object;};
+ 
  private:
   void doCommand(std::list<std::string> &args);
- 
-  std::list<ShellUser*> clients;
+
+  std::map<std::string, cmdEntry> commands;
 };
 
 
