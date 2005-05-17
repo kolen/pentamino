@@ -7,6 +7,8 @@
 #include <sstream>
 #include <list>
 
+using namespace std;
+
 class ShellUser
 {
 public:
@@ -24,13 +26,16 @@ class ShellInterpreter: public ShellUser
   
   void execCode(std::string input);
   void registerCommand(ShellUser *object, std::string cmd, int cmdId);
+  //Builtins
+  int onCommand(int, string&, list<string>&);
  
   struct cmdEntry{int cmdId; ShellUser *object;};
- 
  private:
   void doCommand(std::list<std::string> &args);
 
-  std::map<std::string, cmdEntry> commands;
+  map<string, cmdEntry> commands;
+  map<string, string> vars;
+  static const int CMD_set = 1;
 };
 
 
