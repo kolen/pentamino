@@ -17,15 +17,13 @@ public:
 /**
  * Интерпретатор внутреннего шелла
  */
-class ShellInterpreter
+class ShellInterpreter: public ShellUser
 {
  public:
   ShellInterpreter();
   
   void execCode(std::string input);
   void registerCommand(ShellUser *object, std::string cmd, int cmdId);
- 
-  ShellGlobals globals;
  
   struct cmdEntry{int cmdId; ShellUser *object;};
  
