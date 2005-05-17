@@ -25,8 +25,10 @@ ShellInterpreter::execCode(string commands)
     {
       if (c == '\n')
 	{
+          cur_arg = "";
 	  doCommand(args);
 	  args.clear();
+          state = S_WAIT_NBLANK;
 	}
       else if (isspace(c))
 	{
@@ -99,11 +101,6 @@ ShellInterpreter::execCode(string commands)
   doCommand(args);
 }
 
-ShellInterpreter::ShellInterpreter()
-{
-  return;
-}
-
 void
 ShellInterpreter::doCommand(list<string>& args)
 {
@@ -138,4 +135,22 @@ ShellInterpreter::registerCommand(ShellUser *object, std::string cmd, int cmdId)
   e.cmdId = cmdId;
   e.object = object;
   commands[cmd] = e;
+}
+
+ShellInterpreter::ShellInterpreter()
+{
+  registerCommand(this, "set", CMD_set);
+}
+
+int
+ShellInterpreter::onCommand(int cmdId, string &command, list<string> &args)
+{
+  switch(cmdId)
+    {
+    case CMD_set:
+      string varname = *(args.begin());
+      string varvalue = *(args.begin()++);
+      vars[varname] = varvalue;
+      cerr << "Var: " << varname <<" = " <<varvalue <<endl;
+    }
 }
