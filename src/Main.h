@@ -9,7 +9,7 @@
 
 #define EVENT_50SEC 1
 
-class Main: public SDLInterface, ShellUser
+class Main: public ShellUser, public SDLInterface
 {
  public:
   Main();
@@ -20,7 +20,7 @@ class Main: public SDLInterface, ShellUser
 
   GuiRootWindow rootwindow;
   GameField gamefield;
-  int onCommand(std::string cmd, std::list<std::string> args);
+  int onCommand(int cmdId, std::string &command, std::list<std::string> &args);
 };
 
 #endif

@@ -107,25 +107,35 @@ ShellInterpreter::ShellInterpreter()
 void
 ShellInterpreter::doCommand(list<string>& args)
 {
-  std::list<ShellUser*>::iterator user;
-  string cmd = args.front();
+  string cmd;
+  cmd = args.front();
   args.pop_front();
 
-  for (user = clients.begin(); user != clients.end() ;user++)
+  if (commands.find(cmd) != commands.end())
     {
-      std::cerr << "[.]";
-      if (int i=(*user)->onCommand(cmd, args)){std::cerr << i; return;};
+      cmdEntry& centry = commands[cmd];      
+      centry.object->onCommand(centry.cmdId, cmd, args);
     }
-  std::cerr << "No such command: " << cmd << std::endl;
+  else 
+    {
+      cerr << "No such command: " << cmd << endl;
+    }
 }
 
-
+#if 1
 int 
-ShellUser::onCommand(std::string &command, std::list<std::string> &args)
-{return 0;}
+ShellUser::onCommand(int cmdId, std::string &command, std::list<std::string> &args)
+{
+  std::cerr << "Warning: Called stub onCommand" <<std::endl;
+  return 0xff;
+}
+#endif
 
 void 
-ShellInterpreter::addShellUser(ShellUser *user)
+ShellInterpreter::registerCommand(ShellUser *object, std::string cmd, int cmdId)
 {
-  clients.push_back(user);
+  cmdEntry e;
+  e.cmdId = cmdId;
+  e.object = object;
+  commands[cmd] = e;
 }

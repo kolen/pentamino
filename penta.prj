@@ -123,8 +123,6 @@ module.pixmap.name=.
 module.pixmap.type=
 module.pixmap.files=\
 	img/font.png\
-	img/.xvpics/font.png\
-	img/.xvpics/shapes.png\
 	img/test.png\
 	img/shapes.png
 

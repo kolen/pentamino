@@ -24,13 +24,8 @@ Main::Main()
 
   //Test
   ShellInterpreter interp;
-  interp.addShellUser(this);
-  interp.execCode("fullscreen yes");
-
 
   mainLoop();
-
-
   
   return;
 }
@@ -117,15 +112,8 @@ int Main::initSDL()
 }
 
 int 
-Main::onCommand(std::string cmd, std::list<std::string> args)
+Main::onCommand(int cmdId, std::string &command, std::list<std::string> &args)
 {
-    std::cerr << "eeeFIXME\n";
-
-  if (cmd == "fullscreen") 
-  {
-    std::cerr << "fullscreenFIXME\n" << std::endl;
-    return 1;
-  }
   return 0;
 }
 
