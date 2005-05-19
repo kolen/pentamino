@@ -1,16 +1,21 @@
 #ifndef GUIMENU_H
 #define GUIMENU_H
 
-// $Id: GuiMenu.h,v 1.1 2005/05/19 15:00:50 kolen Exp $
+// $Id: GuiMenu.h,v 1.2 2005/05/19 16:40:07 kolen Exp $
 
-#include "../Sprite.h"
 #include "GuiWidget.h"
+#include "../Sprite.h"
+#include "../Shell.h"
+
 #include <string>
-#include <list>
+#include <vector>
+#include <iostream>
 using namespace std;
 
 #define MENUWIDTH 200
-#define MENULINEHEIGHT 32
+#define MENULINEHEIGHT 16
+#define MENUTEXTOFFSET_X 16
+#define MENUTEXTOFFSET_Y 2
 
 struct MenuItem
 {
@@ -24,13 +29,19 @@ class GuiMenu: public GuiWidget
   GuiMenu(int x, int y);
   void onDraw();
   void addItem(string text, string action);
+  void onMouseFocus(char on);
+  void onMouseMotion(char buttonstate, int x, int y, int dx, int dy);
+  void onMouseButton(char, char, int, int);
  private:
-  list<MenuItem> items;
-  
+  vector<MenuItem> items;
+  int lastSelected;
   static Sprite gfx;
   static Rectangle gfx_area_header;
   static Rectangle gfx_area_item;
   static Rectangle gfx_area_footer;
+  static Rectangle gfx_area_item_sel;
+ 
+  int getInFocus();
 
 };
 
