@@ -22,3 +22,9 @@ GuiDrawContext::text(std::string text, int x, int y)
     }
   
 }
+
+int
+GuiDrawContext::textLength(const std::string &text)
+{
+  return text.size() * font_w;
+}

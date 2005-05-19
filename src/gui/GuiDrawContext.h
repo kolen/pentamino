@@ -11,6 +11,8 @@ class GuiDrawContext: public SDLInterface
  public:
   void text(std::string text, int x, int y);
 
+  int textLength(const std::string &text);
+
   static const int font_w = 6;
   static const int font_h = 12;
  private:
