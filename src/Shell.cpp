@@ -168,3 +168,5 @@ ShellInterpreter::onCommand(int cmdId, string &command, list<string> &args)
       vars[varname] = varvalue;
     }
 }
+
+ShellInterpreter *shell;

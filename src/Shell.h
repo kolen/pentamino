@@ -44,4 +44,6 @@ class ShellInterpreter: public ShellUser
 #define S_BRACKET     2
 #define S_ERROR       3
 
+extern ShellInterpreter *shell;
+
 #endif
