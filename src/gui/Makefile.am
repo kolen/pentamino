@@ -14,4 +14,6 @@ libgui_a_SOURCES = \
 	GuiField.cpp\
 	GuiField.h\
 	GuiMenubar.cpp\
-	GuiMenubar.h
+	GuiMenubar.h\
+	GuiMenu.cpp\
+	GuiMenu.h

@@ -125,7 +125,9 @@ libgui_a_SOURCES = \
 	GuiField.cpp\
 	GuiField.h\
 	GuiMenubar.cpp\
-	GuiMenubar.h
+	GuiMenubar.h\
+	GuiMenu.cpp\
+	GuiMenu.h
 
 subdir = src/gui
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -138,7 +140,8 @@ libgui_a_AR = $(AR) cru
 libgui_a_LIBADD =
 am_libgui_a_OBJECTS = GuiWidget.$(OBJEXT) GuiDrawContext.$(OBJEXT) \
 	GuiRootWindow.$(OBJEXT) GuiContainer.$(OBJEXT) \
-	GuiShapeSel.$(OBJEXT) GuiField.$(OBJEXT) GuiMenubar.$(OBJEXT)
+	GuiShapeSel.$(OBJEXT) GuiField.$(OBJEXT) GuiMenubar.$(OBJEXT) \
+	GuiMenu.$(OBJEXT)
 libgui_a_OBJECTS = $(am_libgui_a_OBJECTS)
 
 DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)/src
@@ -146,7 +149,8 @@ depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/GuiContainer.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/GuiDrawContext.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/GuiField.Po ./$(DEPDIR)/GuiMenubar.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/GuiField.Po ./$(DEPDIR)/GuiMenu.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/GuiMenubar.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/GuiRootWindow.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/GuiShapeSel.Po ./$(DEPDIR)/GuiWidget.Po
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
@@ -190,6 +194,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GuiContainer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GuiDrawContext.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GuiField.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GuiMenu.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GuiMenubar.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GuiRootWindow.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GuiShapeSel.Po@am__quote@
