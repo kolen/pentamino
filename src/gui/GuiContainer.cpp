@@ -19,8 +19,8 @@ void GuiContainer::onDraw()
 void 
 GuiContainer::onMouseButton(char down, char button, int x, int y)
 {
-  std::list<GuiWidget*>::iterator i;
-  for(i=children.begin(); i!=children.end(); i++)
+  std::list<GuiWidget*>::reverse_iterator i;
+  for(i=children.rbegin(); i!=children.rend(); i++)
     {
       if ((*i)->rect.in(x, y))
         {        
@@ -33,8 +33,8 @@ GuiContainer::onMouseButton(char down, char button, int x, int y)
 void
 GuiContainer::onMouseMotion(char buttonstate, int x, int y, int dx, int dy)
 {
-  std::list<GuiWidget*>::iterator i;
-  for(i=children.begin(); i!=children.end(); i++)
+  std::list<GuiWidget*>::reverse_iterator i;
+  for(i=children.rbegin(); i!=children.rend(); i++)
     {
       if ((*i)->rect.in(x, y))
         {        
