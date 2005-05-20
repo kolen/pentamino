@@ -1,5 +1,30 @@
 2005-05-20  kolen@localhost.localdomain  <kolen@localhost.localdomain>
 
+	* src/gui/GuiMenu.cpp: Added redraw on click
+
+	* src/gui/GuiDrawContext.cpp: Fixed char > 127 drawing
+
+	* src/Shell.cpp: Bugfixes
+
+	* src/Main.cpp: Hacks
+
+	* src/GameField.cpp, src/GameField.h: Added saveFile()
+	Added load, save, edit commands
+	Added isEditing flag
+	Fixed clear in loadFile
+
+	* penta.prj: *** empty log message ***
+
+	* src/gui/GuiRootWindow.cpp, src/gui/GuiRootWindow.h: fixed onCommand()
+
+	* src/Main.cpp: Added exit command
+
+	* src/I18n.h: Fixed onCommand; Fixed _()
+
+	* src/I18n.cpp: Fixed onCommand
+
+	* ChangeLog: *** empty log message ***
+
 	* src/Shell.cpp: Fix: '\n' behavior
 
 	* src/gui/GuiRootWindow.cpp, src/gui/GuiRootWindow.h:
