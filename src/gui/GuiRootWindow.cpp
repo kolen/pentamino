@@ -1,6 +1,7 @@
 #include "GuiRootWindow.h"
 
 #include <iostream>
+#include "../I18n.h"
 using namespace std;
 
 GuiRootWindow::GuiRootWindow()
@@ -28,18 +29,22 @@ GuiRootWindow::newmenuCreate()
 }
 
 int
-GuiRootWindow::onCommand(int cmdId, string &command, list<string> args)
+GuiRootWindow::onCommand(int cmdId, string &command, list<string>& args)
 {
   switch(cmdId) {
   case CMD_menu:
     CHKARGS(1);
     newmenu_title = POPARG;
+    //FIXME:
+    newmenu_pos[0] = 0;
+    newmenu_pos[1] = 16;
     break;
   case CMD_mplus:
     {
     CHKARGS(2);
     mitem item;
     item.title = POPARG;
+    item.title = i18n->_(item.title);
     item.cmd = POPARG;
     newmenu_items.push_back(item);
     break;
