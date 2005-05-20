@@ -109,7 +109,7 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-SUBDIRS = src doc img
+SUBDIRS = src doc img maps
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
@@ -496,8 +496,8 @@ uninstall-info: uninstall-info-recursive
 
 #
 # $Log: Makefile.in,v $
-# Revision 1.3  2005/05/20 15:49:01  kolen
-# Changed ver number
+# Revision 1.4  2005/05/20 15:57:20  kolen
+# Added maps directory
 #
 # Revision 1.2  2005/05/20 13:06:08  kolen
 # *** empty log message ***

@@ -545,8 +545,8 @@ uninstall-info: uninstall-info-recursive
 #
 #
 # $Log: Makefile.in,v $
-# Revision 1.4  2005/05/20 15:49:01  kolen
-# Changed ver number
+# Revision 1.5  2005/05/20 15:57:20  kolen
+# Added maps directory
 #
 # Revision 1.3  2005/05/20 12:52:15  kolen
 # New I18n class

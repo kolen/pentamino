@@ -3398,7 +3398,7 @@ fi
 #AC_CHECK_FUNCS([atexit])
 
 #AC_CONFIG_FILES([src/Makefile])
-                                                  ac_config_files="$ac_config_files Makefile src/Makefile src/gui/Makefile doc/Makefile img/Makefile"
+                                                            ac_config_files="$ac_config_files Makefile src/Makefile src/gui/Makefile doc/Makefile img/Makefile maps/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -3959,6 +3959,7 @@ do
   "src/gui/Makefile" ) CONFIG_FILES="$CONFIG_FILES src/gui/Makefile" ;;
   "doc/Makefile" ) CONFIG_FILES="$CONFIG_FILES doc/Makefile" ;;
   "img/Makefile" ) CONFIG_FILES="$CONFIG_FILES img/Makefile" ;;
+  "maps/Makefile" ) CONFIG_FILES="$CONFIG_FILES maps/Makefile" ;;
   "depfiles" ) CONFIG_COMMANDS="$CONFIG_COMMANDS depfiles" ;;
   "src/config.h" ) CONFIG_HEADERS="$CONFIG_HEADERS src/config.h" ;;
   *) { { echo "$as_me:$LINENO: error: invalid argument: $ac_config_target" >&5
