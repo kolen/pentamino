@@ -109,7 +109,7 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-SUBDIRS = src doc
+SUBDIRS = src doc img
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
@@ -493,6 +493,13 @@ uninstall-info: uninstall-info-recursive
 	uninstall uninstall-am uninstall-info-am \
 	uninstall-info-recursive uninstall-recursive
 
+
+#
+# $Log: Makefile.in,v $
+# Revision 1.2  2005/05/20 13:06:08  kolen
+# *** empty log message ***
+#
+#
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

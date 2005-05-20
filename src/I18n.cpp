@@ -1,4 +1,4 @@
-/* $Id: I18n.cpp,v 1.1 2005/05/20 12:52:15 kolen Exp $ */
+/* $Id: I18n.cpp,v 1.2 2005/05/20 13:06:08 kolen Exp $ */
 #include "I18n.h"
 
 void
@@ -25,3 +25,5 @@ I18n::onCommand(int id, string command, list<string> args)
       translation += " ";
     }
 }
+
+I18n *i18n;

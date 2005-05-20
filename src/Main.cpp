@@ -2,6 +2,7 @@
 #include "Shell.h"
 
 #include "Sprite.h"
+#include "I18n.h"
 
 #include <SDL/SDL.h>
 
@@ -13,6 +14,9 @@ using namespace std;
 int main(int argc, char* argv[])
 {
   shell = new ShellInterpreter();
+  i18n = new I18n();
+  i18n->language = "ru";
+  i18n->_("aaa");
   Main Main;
   return 0;
 }
