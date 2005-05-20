@@ -1,5 +1,6 @@
-//$id$
+// $Id: Shell.cpp,v 1.7 2005/05/20 13:46:02 kolen Exp $
 #include "Shell.h"
+#include "File.h"
 #include <iostream>
 #include <ctype.h>
 #include <sstream>
@@ -195,6 +196,7 @@ ShellInterpreter::onCommand(int cmdId, string &command, list<string> &args)
       {
       CHKARGS(1);
       string filename = POPARG;
+      filename = path(filename);
       string code;
       stringstream ss(code);
       ifstream f(filename.c_str());
