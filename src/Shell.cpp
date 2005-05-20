@@ -1,4 +1,4 @@
-// $Id: Shell.cpp,v 1.7 2005/05/20 13:46:02 kolen Exp $
+// $Id: Shell.cpp,v 1.8 2005/05/20 13:51:14 kolen Exp $
 #include "Shell.h"
 #include "File.h"
 #include <iostream>
@@ -122,6 +122,8 @@ ShellInterpreter::doCommand(list<string>& args)
   cmd = args.front();
   args.pop_front();
 
+  if (cmd == "") return;
+
   if (commands.find(cmd) != commands.end())
     {
       cmdEntry& centry = commands[cmd];      
@@ -158,6 +160,10 @@ ShellInterpreter::registerCommand(ShellUser *object, std::string cmd, int cmdId)
 ShellInterpreter::ShellInterpreter()
 {
   registerCommand(this, "set", CMD_set);
+  registerCommand(this, "def", CMD_def);
+  registerCommand(this, "if", CMD_if);
+  registerCommand(this, "exec", CMD_exec);
+  
 }
 
 int
