@@ -29,7 +29,12 @@ Main::Main()
   shell->registerCommand(this, "exit", 0);
 
   shell->execCode("exec default.cfg");
-  shell->execCode("menu fafik\nm+ aa bb\nm+ fafik exit\nmenu_end"
+  shell->execCode("menu fafik\n"
+                  "m+ SaveTest {save ooz.map}\n"
+                  "m+ LoadTest {load ooz.map}\n"
+                  "m+ EditTest {edit ooz.map}\n"
+                  "m+ Выход exit\n"
+                  "menu_end"
                   );
 
   mainLoop();
@@ -103,7 +108,7 @@ int Main::initSDL()
     exit(1);
   }
 
-  /* Clean up on exit */
+  /* Clean up on ex
   atexit(SDL_Quit);
     
   /*
