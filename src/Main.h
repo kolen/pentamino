@@ -7,8 +7,6 @@
 #include "GameField.h"
 #include "Shell.h"
 
-#define EVENT_50SEC 1
-
 class Main: public ShellUser, public SDLInterface
 {
  public:

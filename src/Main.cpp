@@ -120,11 +120,3 @@ Main::onCommand(int cmdId, std::string &command, std::list<std::string> &args)
 {
   return 0;
 }
-
-Uint32 timer_50(Uint32 interval, void *param)
-{
-  SDL_Event event;
-  event.type = SDL_USEREVENT;
-  event.user.code = EVENT_50SEC;
-  SDL_PushEvent(&event);
-}
