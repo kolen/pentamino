@@ -1,6 +1,6 @@
 #ifndef I18N_H
 #define I18N_H
-/* $Id: I18n.h,v 1.2 2005/05/20 13:06:08 kolen Exp $ */
+/* $Id: I18n.h,v 1.3 2005/05/20 14:57:33 kolen Exp $ */
 
 #include <map>
 #include <string>
@@ -19,10 +19,17 @@ public:
   void addString(string id, string translation);
   string& _(string id) 
     {
-      return strings.find(id)->second;
+      map<string,string>::iterator f;
+      f=strings.find(id);
+      if (f != strings.end()) {
+        cerr << "Trying [" << id << "], res=["<<f->second<<"]" << endl;
+        return f->second;
+      } else {
+        return id;
+      }
     }
   string language;
-  int onCommand(int, string, list<string>);
+  int onCommand(int, string&, list<string>&);
 private:
   map<string, string> strings;
 };
