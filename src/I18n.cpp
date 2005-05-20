@@ -1,4 +1,4 @@
-/* $Id: I18n.cpp,v 1.2 2005/05/20 13:06:08 kolen Exp $ */
+/* $Id: I18n.cpp,v 1.3 2005/05/20 14:57:00 kolen Exp $ */
 #include "I18n.h"
 
 void
@@ -8,7 +8,7 @@ I18n::addString(string id, string translation)
 }
 
 int
-I18n::onCommand(int id, string command, list<string> args)
+I18n::onCommand(int id, string &command, list<string> &args)
 {
   if (id != 0) return 0; //Only one command: string
   if (args.size() < 2) {
@@ -24,6 +24,7 @@ I18n::onCommand(int id, string command, list<string> args)
       translation += *i;
       translation += " ";
     }
+  strings[strId] = translation;
 }
 
 I18n *i18n;
