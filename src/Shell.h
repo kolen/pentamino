@@ -7,6 +7,9 @@
 #include <sstream>
 #include <list>
 
+#define POPARG args.front();args.pop_front()
+#define CHKARGS(num) if(args.size()!=num){std::cerr<<command<<": "<<num<<" args required"<<std::endl; return 0;}
+
 using namespace std;
 
 class ShellUser
@@ -34,8 +37,13 @@ class ShellInterpreter: public ShellUser
   void doCommand(std::list<std::string> &args);
 
   map<string, cmdEntry> commands;
+  map<string, string> defs;
   map<string, string> vars;
-  static const int CMD_set = 1;
+  //----- Command ids ------: //
+  static const int CMD_set  = 1;
+  static const int CMD_def  = 2;
+  static const int CMD_if   = 3;
+  static const int CMD_exec = 4;
 };
 
 

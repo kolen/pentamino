@@ -4,6 +4,7 @@
 #include <ctype.h>
 #include <sstream>
 #include <iterator>
+#include <fstream>
 
 
 using namespace std;
@@ -125,6 +126,10 @@ ShellInterpreter::doCommand(list<string>& args)
       cmdEntry& centry = commands[cmd];      
       centry.object->onCommand(centry.cmdId, cmd, args);
     }
+  else if (defs.find(cmd) != defs.end())
+    {
+      execCode(defs[cmd]);
+    }
   else 
     {
       cerr << "No such command: " << cmd << endl;
@@ -161,11 +166,42 @@ ShellInterpreter::onCommand(int cmdId, string &command, list<string> &args)
   switch(cmdId)
     {
     case CMD_set:
-      cerr << args.size();
+      {
       it = args.begin();
       string varname = *it;
       string varvalue = *(++it);
       vars[varname] = varvalue;
+      break;
+      }
+    case CMD_def:
+      {
+      CHKARGS(2);
+      string cmd = POPARG;
+      string code = POPARG;
+      defs[cmd] = code;
+      break;
+      }
+    case CMD_if:
+      {
+      CHKARGS(2);
+      string var = POPARG;
+      if (vars.find(var)!=vars.end() && vars[var] != "") {
+        string code = POPARG;
+        execCode(code);
+      }
+      break;
+      }
+    case CMD_exec:
+      {
+      CHKARGS(1);
+      string filename = POPARG;
+      string code;
+      stringstream ss(code);
+      ifstream f(filename.c_str());
+      ss << f.rdbuf();
+      execCode(code);
+      break;
+      }
     }
 }
 
