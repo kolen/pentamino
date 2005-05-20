@@ -1,4 +1,4 @@
-// $Id: GuiMenu.cpp,v 1.2 2005/05/19 16:40:07 kolen Exp $ 
+// $Id: GuiMenu.cpp,v 1.3 2005/05/20 15:45:30 kolen Exp $ 
 
 #include "GuiMenu.h"
 
@@ -87,5 +87,8 @@ GuiMenu::onMouseButton(char down, char button, int x, int y)
 {
   int sel = getInFocus();
   shell->execCode(items[sel].action);
-  shell->execCode("MenuRemove");
+  setDirty();
+
+  //FIXME:
+  //shell->execCode("MenuRemove");
 }
