@@ -25,9 +25,9 @@ Main::Main()
 {
   initSDL();
   rootwindow.setDirty();
-  rootwindow.setGameField(&gamefield);  
+  rootwindow.setGameField(&gamefield);
 
-  shell->execCode("set a {b c\n d}\n set b oo");
+  shell->execCode("exec default.cfg");
 
   mainLoop();
   

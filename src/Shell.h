@@ -1,6 +1,8 @@
 #ifndef SHELL_H
 #define SHELL_H
 
+// $Id: Shell.h,v 1.7 2005/05/20 13:52:28 kolen Exp $
+
 #include <istream>
 #include <map>
 #include <string>
