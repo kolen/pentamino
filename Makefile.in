@@ -496,6 +496,9 @@ uninstall-info: uninstall-info-recursive
 
 #
 # $Log: Makefile.in,v $
+# Revision 1.3  2005/05/20 15:49:01  kolen
+# Changed ver number
+#
 # Revision 1.2  2005/05/20 13:06:08  kolen
 # *** empty log message ***
 #

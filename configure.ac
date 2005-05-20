@@ -2,8 +2,8 @@
 # Process this file with autoconf to produce a configure script.
 
 #AC_PREREQ(2.57)
-AC_INIT(pentamino, 0.1.0, [kolen@nm.ru])
-AM_INIT_AUTOMAKE(pentamino, 0.1.0)
+AC_INIT(pentamino, 0.1.1, [kolen@nm.ru])
+AM_INIT_AUTOMAKE(pentamino, 0.1.1)
 #AM_CONFIG_SRCDIR([src/Main.cpp])
 AC_DEFINE(DATADIR, $datadir, [/share])
 AM_CONFIG_HEADER(src/config.h)
