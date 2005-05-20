@@ -2,6 +2,10 @@
 #include <cstdio>
 #include <fstream>
 
+#ifndef DATADIR
+#define DATADIR 0
+#endif
+
 
 
 char* FilePath::paths[] = {
@@ -9,6 +13,7 @@ char* FilePath::paths[] = {
   "../",
   "/usr/share/pentamino/",
   "/usr/local/share/pentamino/",
+  DATADIR,
   0
 };
 
@@ -21,6 +26,7 @@ FilePath::FilePath()
       std::string s = *i;
       s += "img/shapes.png";
       std::ifstream f(s.c_str());
+      std::cerr << "Looking path: "<< *i <<std::endl;
       if (f)
         {
           prefix = *i;

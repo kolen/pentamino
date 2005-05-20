@@ -46,7 +46,8 @@ AWK = @AWK@
 CC = @CC@
 CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
-CPPFLAGS = @CPPFLAGS@
+
+CPPFLAGS = -DDATADIR=\"$(datadir)/$(PACKAGE_NAME)-$(PACKAGE_VERSION)/\" @CPPFLAGS@
 CXX = @CXX@
 CXXDEPMODE = @CXXDEPMODE@
 CXXFLAGS = @CXXFLAGS@
@@ -128,7 +129,8 @@ pentamino_SOURCES = \
 	Shape.h \
 	shapes.cpp \
 	File.cpp \
-	File.h
+	File.h \
+	Service.h
 
 
 pentamino_LDADD = gui/libgui.a
@@ -534,6 +536,16 @@ uninstall-info: uninstall-info-recursive
 	tags-recursive uninstall uninstall-am uninstall-binPROGRAMS \
 	uninstall-info-am uninstall-info-recursive uninstall-recursive
 
+
+#
+#
+# $Log: Makefile.in,v $
+# Revision 1.2  2005/05/20 11:28:11  kolen
+# Directory search from autoconf.
+# Fixed missing files in "make install"
+# Added install
+#
+#
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

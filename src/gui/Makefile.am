@@ -17,3 +17,13 @@ libgui_a_SOURCES = \
 	GuiMenubar.h\
 	GuiMenu.cpp\
 	GuiMenu.h
+	
+#
+# $Log: Makefile.am,v $
+# Revision 1.3  2005/05/20 11:28:27  kolen
+# Directory search from autoconf.
+# Fixed missing files in "make install"
+# Added install
+#
+#
+#	

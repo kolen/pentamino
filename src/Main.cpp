@@ -12,6 +12,7 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
+  shell = new ShellInterpreter();
   Main Main;
   return 0;
 }
@@ -22,10 +23,7 @@ Main::Main()
   rootwindow.setDirty();
   rootwindow.setGameField(&gamefield);  
 
-  //Test
-  ShellInterpreter interp;
-
-  interp.execCode("set a {b c\n d}\n set b oo");
+  shell->execCode("set a {b c\n d}\n set b oo");
 
   mainLoop();
   

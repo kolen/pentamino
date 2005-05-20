@@ -32,4 +32,4 @@
 #define PACKAGE_VERSION "0.1.0"
 
 /* Version number of package */
-#define VERSION "0.0.1"
+#define VERSION "0.1.0"
