@@ -46,8 +46,7 @@ AWK = @AWK@
 CC = @CC@
 CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
-
-CPPFLAGS = -DDATADIR=\"$(datadir)/$(PACKAGE_NAME)-$(PACKAGE_VERSION)/\" @CPPFLAGS@
+CPPFLAGS = @CPPFLAGS@
 CXX = @CXX@
 CXXDEPMODE = @CXXDEPMODE@
 CXXFLAGS = @CXXFLAGS@
@@ -112,6 +111,8 @@ sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 SUBDIRS = gui
 
+AM_CPPFLAGS = -DDATADIR=\"$(datadir)/$(PACKAGE_NAME)-$(PACKAGE_VERSION)/\" @CPPFLAGS@
+
 bin_PROGRAMS = pentamino
 
 pentamino_SOURCES = \
@@ -130,7 +131,9 @@ pentamino_SOURCES = \
 	shapes.cpp \
 	File.cpp \
 	File.h \
-	Service.h
+	Service.h \
+	I18n.cpp \
+	I18n.h
 
 
 pentamino_LDADD = gui/libgui.a
@@ -144,7 +147,7 @@ PROGRAMS = $(bin_PROGRAMS)
 
 am_pentamino_OBJECTS = Main.$(OBJEXT) Shell.$(OBJEXT) Sprite.$(OBJEXT) \
 	SDLInterface.$(OBJEXT) GameField.$(OBJEXT) Shape.$(OBJEXT) \
-	shapes.$(OBJEXT) File.$(OBJEXT)
+	shapes.$(OBJEXT) File.$(OBJEXT) I18n.$(OBJEXT)
 pentamino_OBJECTS = $(am_pentamino_OBJECTS)
 pentamino_DEPENDENCIES = gui/libgui.a
 pentamino_LDFLAGS =
@@ -153,9 +156,10 @@ DEFAULT_INCLUDES =  -I. -I$(srcdir) -I.
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/File.Po ./$(DEPDIR)/GameField.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/Main.Po ./$(DEPDIR)/SDLInterface.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/Shape.Po ./$(DEPDIR)/Shell.Po \
-@AMDEP_TRUE@	./$(DEPDIR)/Sprite.Po ./$(DEPDIR)/shapes.Po
+@AMDEP_TRUE@	./$(DEPDIR)/I18n.Po ./$(DEPDIR)/Main.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/SDLInterface.Po ./$(DEPDIR)/Shape.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/Shell.Po ./$(DEPDIR)/Sprite.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/shapes.Po
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
 CXXLD = $(CXX)
@@ -239,6 +243,7 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/File.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GameField.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/I18n.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Main.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SDLInterface.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Shape.Po@am__quote@
@@ -540,6 +545,9 @@ uninstall-info: uninstall-info-recursive
 #
 #
 # $Log: Makefile.in,v $
+# Revision 1.3  2005/05/20 12:52:15  kolen
+# New I18n class
+#
 # Revision 1.2  2005/05/20 11:28:11  kolen
 # Directory search from autoconf.
 # Fixed missing files in "make install"
