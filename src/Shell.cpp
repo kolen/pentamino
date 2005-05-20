@@ -1,4 +1,4 @@
-// $Id: Shell.cpp,v 1.9 2005/05/20 14:29:29 kolen Exp $
+// $Id: Shell.cpp,v 1.10 2005/05/20 15:43:50 kolen Exp $
 #include "Shell.h"
 #include "File.h"
 #include <iostream>
@@ -33,7 +33,8 @@ ShellInterpreter::execCode(string commands)
           }              
           else 
           { 
-            args.push_back(cur_arg);
+            if (cur_arg != "")
+              args.push_back(cur_arg);
             cur_arg = "";
 	    doCommand(args);
 	    args.clear();
@@ -61,7 +62,7 @@ ShellInterpreter::execCode(string commands)
 	      depth++;
 	    }
 	  else if (state == S_WORD)
-	    {
+	    {              
 	      args.push_back(cur_arg);
 	      cur_arg = "";
 	      state = S_BRACKET;
@@ -79,8 +80,8 @@ ShellInterpreter::execCode(string commands)
 	    {
 	      depth--;
 	      if (depth == 0)
-		{
-		  args.push_back(cur_arg);
+		{                  
+                  args.push_back(cur_arg);
 		  cur_arg = "";
 		  state = S_WAIT_NBLANK;
 		}
