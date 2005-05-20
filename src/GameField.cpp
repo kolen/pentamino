@@ -1,4 +1,4 @@
-// $Id: GameField.cpp,v 1.2 2005/05/17 17:38:10 kolen Exp $
+// $Id: GameField.cpp,v 1.3 2005/05/20 15:42:18 kolen Exp $
 
 #include "GameField.h"
 #include "File.h"
@@ -6,6 +6,8 @@
 #include <cassert>
 #include <iostream>
 #include <fstream>
+
+using namespace std;
 
 GameField::GameField()
 {
@@ -22,6 +24,10 @@ GameField::GameField()
       shapes[i].y = (i/3) * 6;
       updateShape(i);
     }
+  
+  shell->registerCommand(this, "save", CMD_save);
+  shell->registerCommand(this, "load", CMD_load);
+  shell->registerCommand(this, "edit", CMD_edit);
 }
 
 void
@@ -120,7 +126,7 @@ GameField::clear(bool edit)
     std::memset(tiles, 0x11, sizeof(tiles));
     std::memset(shapenums, 0x20, sizeof(shapenums));
   }
-  
+  isEditing = edit;
 }
 
 void
@@ -154,7 +160,7 @@ GameField::loadFile(std::string filename, bool edit)
       goto fault;
     }
   
-  clear();
+  clear(edit);
   
   int i, s_x, s_y, s_r;
   for (i=0; i<12; i++) {
@@ -167,7 +173,59 @@ GameField::loadFile(std::string filename, bool edit)
     shape(i).rot = s_r;
     edit ? updateShape(i) : divideShape(i);
   }
-  
+  isEditing = edit;
 fault:
   return 0;
+}
+
+int
+GameField::saveFile(string filename)
+{
+  std::ofstream f(path("maps/"+filename).c_str());
+
+  //Calculate size of shape
+  int xx=0, yy=0, xx1=width, yy1=height;
+  int x, y, i;
+  for (x=0; x<width; x++)
+    for (y=0; y<height; y++)
+      if (at(x, y)) {
+        if (x<xx)  xx=x;
+        if (x>xx1) xx1=x;
+        if (y<yy)  yy=y;
+        if (y>yy1) yy1=y;
+      }
+  
+  f<<"penta "<<(xx1-xx)<<" "<<(yy1-yy)<<endl;
+    
+  for (i=0; i<12; i++) {
+    Shape &s = shape(i);
+    f << s.x << " " << s.y << " " << s.rot << endl;
+  }
+  return 0;
+}
+
+int
+GameField::onCommand(int cmdId, std::string &command, std::list<std::string> &args)
+{
+  switch(cmdId) {
+    case CMD_save:
+      {
+      CHKARGS(1);
+      if (!isEditing) {
+        cerr << "Cannot save while not editing!" << endl;
+      }
+      string file = POPARG;
+      saveFile(file);
+      break;
+      }
+    case CMD_load:
+    case CMD_edit:  
+      {
+      CHKARGS(1);
+      string file = POPARG;
+      loadFile(file, cmdId==CMD_edit);
+      break;
+      }
+    
+  }
 }
