@@ -1,5 +1,6 @@
 #include "GuiDrawContext.h"
 #include <iterator>
+#include <iostream>
 
 Sprite GuiDrawContext::font("font.png", SDL_SRCCOLORKEY, 0xff, 0xff, 0xff);
 
@@ -14,7 +15,7 @@ GuiDrawContext::text(std::string text, int x, int y)
 
   for (si = text.begin(); si != text.end(); si++)
     {
-      char c = *si;
+      unsigned char c = *si;
       srect.x = (c & 0x1f) * font_w;
       srect.y = ((c >> 5) - 1) * font_h;  
       font.draw(x, y, &srect);
