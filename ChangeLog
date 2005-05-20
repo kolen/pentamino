@@ -1,3 +1,89 @@
+2005-05-20  kolen@localhost.localdomain  <kolen@localhost.localdomain>
+
+	* src/Shell.cpp: Fix: '\n' behavior
+
+	* src/gui/GuiRootWindow.cpp, src/gui/GuiRootWindow.h:
+	Bound 'menu, m+, menu_end' to GuiRootWindow
+
+	* src/Main.cpp, src/Shell.h: "exec default.cfg"
+
+	* src/Shell.cpp: Some fixes
+
+	* src/Shell.cpp: Fixed path
+
+	* src/Shell.cpp, src/Shell.h: Shell improvements
+
+	* src/Main.cpp, src/Main.h: Removed trash
+
+	* img/.cvsignore, Makefile.am, Makefile.in, configure, configure.ac, penta.prj, src/I18n.cpp, src/I18n.h, src/Main.cpp:
+	*** empty log message ***
+
+	* img/Makefile.am, img/Makefile.in, img/menuitem.png: New files in img/
+
+	* src/gui/.cvsignore, src/.cvsignore, src/I18n.cpp, src/I18n.h, src/Makefile.am, src/Makefile.in:
+	New I18n class
+
+	* src/gui/Makefile.am, src/gui/Makefile.in, src/File.cpp, src/Main.cpp, src/Makefile.am, src/Makefile.in, src/config.h:
+	Directory search from autoconf.
+	Fixed missing files in "make install"
+	Added install
+
+2005-05-19  kolen@localhost.localdomain  <kolen@localhost.localdomain>
+
+	* src/gui/GuiMenu.cpp, src/gui/GuiMenu.h: Fixes. Added onMouseButton().
+
+	* src/Shell.cpp, src/Shell.h: Added global 'shell' variable
+
+	* src/gui/GuiContainer.cpp:
+	Fixed behavior of onMouseMotion and onMouseButton to reverse looping thru list
+
+	* src/gui/GuiMenu.cpp, src/gui/GuiMenu.h: new GuiMenu class
+
+	* src/gui/Makefile.am, src/gui/Makefile.in: Added GuiMenu.cpp/.h
+
+	* src/gui/GuiDrawContext.cpp, src/gui/GuiDrawContext.h:
+	Added textLength()
+
+2005-05-17  kolen@localhost.localdomain  <kolen@localhost.localdomain>
+
+	* src/GameField.cpp, src/GameField.h: Added loading of map files
+	GameField::loadFile
+
+	* doc/.cvsignore, src/.cvsignore, .cvsignore, src/Main.cpp, src/gui/.cvsignore:
+	*** empty log message ***
+
+	* src/Shell.cpp: Fixed '{' & '}'
+
+	* src/Shell.cpp: fixed newline char behavior
+
+	* src/Shell.h: Fixed newline char behavior
+
+	* src/Shell.h: Fixed ShellGlobals
+
+	* ChangeLog, penta.prj, src/Main.cpp, src/Main.h, src/Shell.cpp:
+	Some changes in Shell
+
+	* src/Shell.h: Removed ShellGlobals
+	Modified cmd model
+
+2005-05-16  kolen@localhost.localdomain  <kolen@localhost.localdomain>
+
+	* src/File.cpp: Removed some dbg messages
+
+	* _/genshapes.py: Added.
+
+	* AUTHORS, COPYING, ChangeLog, INSTALL, NEWS, README, aclocal.m4, config.cache, depcomp, doc/Makefile.am, doc/Makefile.in, doc/TEST, img/font.png, img/menu.png, img/shapes.png, img/test.png, img/tiles.png, install-sh, missing, mkinstalldirs, penta.prj.13723, src/File.cpp, src/File.h, src/GameField.cpp, src/GameField.h, src/Main.cpp, src/Main.h, src/Makefile.am, src/Makefile.in, src/SDLInterface.cpp, src/SDLInterface.h, src/Service.h, src/Shape.cpp, src/Shape.h, src/Shell.cpp, src/Shell.h, src/Sprite.cpp, src/Sprite.h, src/config.h, src/config.h.in, src/gui/GuiContainer.cpp, src/gui/GuiContainer.h, src/gui/GuiDrawContext.cpp, src/gui/GuiDrawContext.h, src/gui/GuiField.cpp, src/gui/GuiField.h, src/gui/GuiMenubar.cpp, src/gui/GuiMenubar.h, src/gui/GuiRootWindow.cpp, src/gui/GuiRootWindow.h, src/gui/GuiShapeSel.cpp, src/gui/GuiShapeSel.h, src/gui/GuiWidget.cpp, src/gui/GuiWidget.h, src/gui/Makefile.am, src/gui/Makefile.in, src/shapes.cpp, src/stamp-h1, stamp-h1, testrun.sh:
+	Imported
+
+	* AUTHORS, COPYING, ChangeLog, INSTALL, NEWS, README, aclocal.m4, config.cache, depcomp, doc/Makefile.am, doc/Makefile.in, doc/TEST, img/font.png, img/menu.png, img/shapes.png, img/test.png, img/tiles.png, install-sh, missing, mkinstalldirs, penta.prj.13723, src/File.cpp, src/File.h, src/GameField.cpp, src/GameField.h, src/Main.cpp, src/Main.h, src/Makefile.am, src/Makefile.in, src/SDLInterface.cpp, src/SDLInterface.h, src/Service.h, src/Shape.cpp, src/Shape.h, src/Shell.cpp, src/Shell.h, src/Sprite.cpp, src/Sprite.h, src/config.h, src/config.h.in, src/gui/GuiContainer.cpp, src/gui/GuiContainer.h, src/gui/GuiDrawContext.cpp, src/gui/GuiDrawContext.h, src/gui/GuiField.cpp, src/gui/GuiField.h, src/gui/GuiMenubar.cpp, src/gui/GuiMenubar.h, src/gui/GuiRootWindow.cpp, src/gui/GuiRootWindow.h, src/gui/GuiShapeSel.cpp, src/gui/GuiShapeSel.h, src/gui/GuiWidget.cpp, src/gui/GuiWidget.h, src/gui/Makefile.am, src/gui/Makefile.in, src/shapes.cpp, src/stamp-h1, stamp-h1, testrun.sh:
+	New file.
+
+	* Makefile.am, Makefile.in, configure, configure.ac, penta.prj:
+	Imported
+
+	* Makefile.am, Makefile.in, configure, configure.ac, penta.prj:
+	New file.
+
 2005-05-16  kolen@localhost.localdomain  <kolen@localhost.localdomain>
 
 	* src/File.cpp: Removed some dbg messages
