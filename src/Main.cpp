@@ -26,8 +26,11 @@ Main::Main()
   initSDL();
   rootwindow.setDirty();
   rootwindow.setGameField(&gamefield);
+  shell->registerCommand(this, "exit", 0);
 
   shell->execCode("exec default.cfg");
+  shell->execCode("menu fafik\nm+ aa bb\nm+ fafik exit\nmenu_end"
+                  );
 
   mainLoop();
   
@@ -118,5 +121,8 @@ int Main::initSDL()
 int 
 Main::onCommand(int cmdId, std::string &command, std::list<std::string> &args)
 {
-  return 0;
+  if (cmdId == 0) { //Exit
+    //FIXME:
+    exit(0);
+  }
 }
