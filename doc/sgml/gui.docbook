@@ -1,13 +1,75 @@
 <?xml version="1.0" encoding="koi8-r" ?>
 <!-- ************************************************************ -->
-<chapter id="gui">
-<title>Графический интерфейс пользователя (GUI)</title>
+  <chapter id="gui">
+    <title>Графический интерфейс пользователя (GUI)</title>
+    
+    <section><title>Класс <classname>GuiWidget</classname></title >
 
-<section><title>Класс <classname>GuiWidget</classname></title >
+      <para>Класс <classname>GuiWidget</classname> &md; класс, от которого унаследованы все остальные классы окон GUI.</para >
 
-<para>Класс <classname>GuiWidget</classname> &md; класс, от которого унаследованы все остальные классы окон GUI.</para >
+    </section>
 
-</section>
+    <section>
+      <title>Событийная модель</title>
+      <para>GUI элементы могут реагировать на события. Для этого у них
+      существуют методы, определенные как virtual:</para>
 
+      <itemizedlist>
+	<listitem>onDraw()</listitem>
+	<listitem>onMouseButton()</listitem>
+	<listitem>onMouseMotion()</listitem>
+	<listitem>onKeyboard()</listitem>
+      </itemizedlist>
 
-</chapter>
+      <para>События передаются от самого корневого окна (экземпляр
+      <classname>GuiRootWindow</classname>) к дочерним. Вызов событий
+      в корневом окне происходит в функции
+      <function>Main::mainLoop()</function>.
+      </para> 
+
+    </section>
+
+    <section>
+      <title>Потомки <classname>GuiWidget</classname></title>
+
+    <section>
+      <title>Класс <classname>GuiRootWindow</classname></title>
+      <para>Корневое окно. Один экземпляр такого окна создается в
+      классе <classname>Main</classname>. В это окно поступают события
+      из класса <classname>Main</classname>.</para>
+      <para><classname>GuiRootWindow</classname> унаследован от
+      <classname>GuiContainer</classname>.</para>
+    </section>
+
+    <section>
+      <title>Класс <classname>GuiField</classname></title>
+      <para>Является графическим представлением игрового поля
+      (<classname>GameField</classname>).</para>
+      <para>Имеет функцию
+      <function>setGameField(GameField*)</function>, привязывающую экземпляр
+      <classname>GameField</classname> к окну.
+      </para>
+    </section>
+
+    <section>
+      <title>Класс <classname>GuiShapeSel</classname></title>
+      <para>Реализует окно с кнопками для выбора фигур, находящееся
+      справа экрана. Также для привязки к самому
+      <classname>GameField</classname> существует функция setGameField.</para>
+    </section>
+
+    <section>
+      <title>Класс <classname>GuiMenubar</classname></title>
+      <para>Реализует строку меню. Класс недописан.</para>
+    </section>
+
+    <section>
+      <title>Класс <classname>GuiMenu</classname></title>
+      <para>Всплывающее меню. При выборе элемента встроенный
+      интерпретатор выполняет команду, ассоциированную с этим
+      элементом.</para>
+    </section>
+
+  </section>
+
+  </chapter>

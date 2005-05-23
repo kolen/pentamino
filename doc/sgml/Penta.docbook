@@ -46,8 +46,6 @@
 <section><title>Общие сведения</title>
 <para>Программа написана на языке программирования C++ с использованием стандартной библиотеки шаблонов. Для вывода графики и обработки устройств ввода используется библиотека libSDL (Simple DirectMedia Layer), являющаяся прослойкой между программой и функциями работы с устройствами различных операционных систем и аппаратных платформ. </para>
 
-<para>Программа может быть собрана и запущктного GuiWidget.</para>
-
 <para>Для автоматизированной сборки программы под POSIX-совместимыми системами используется система autoconf.</para >
 
 </section>
@@ -58,10 +56,21 @@
 <chapter id="3-structure">
 <title>Структура программы</title>
 
-<para>Программа состоит из множества файлов исходного текста. Файлы с кодом функций имеют расширение <filename>.cpp</filename>, заголовочные &md; <filename>.h</filename>.Как правило, имя файла соответстсвует имени класса, однако в нескольких случаях в одном файле было задано несколько классов. </para >
+<para>Программа состоит из множества файлов исходного текста: файлы с кодом функций имеют расширение <filename>.cpp</filename>, заголовочные &md; <filename>.h</filename>.Как правило, имя файла соответстсвует имени класса, однако в нескольких случаях в одном файле было задано несколько классов. </para >
 
 <para>Исходный код проекта содержится в каталоге <filename>src</filename>.</para >
-
+<para>Использовались следующие правила именования:</para>
+      <itemizedlist>
+	<listitem>
+	  Классы: ExampleName
+	</listitem>
+	<listitem>
+	  Функции: exampleName
+	</listitem>
+	<listitem>
+	  переменные: example_name (иногда exampleName)
+	</listitem>
+      </itemizedlist>
 <section id="Main-class"><title>Класс <classname>Main</classname></title>
 <para>Класс Main &md; содержится в файлах <filename>Main.cpp</filename> и <filename>Main.h</filename>. В <filename>Main.cpp</filename> также определена функция <function>main()</function>.</para>
 
@@ -85,6 +94,35 @@
 </chapter>
 
 &gui;
+
+<!-- ************************************************************ -->
+    <chapter id="shell">
+      <title>Встроенный интерпретатор</title>
+      <para>Встроенный интерпретатор (<filename>Shell.cpp</filename>, <filename>Shell.h</filename>) служит для выполнения команд, связывающих объекты внутри программы.</para>
+      <para>Интерпретатор устроен очень минималистически. Синтаксис прост: код, который необходимо выполнить, делится на строки, строки делятся на &lq;слова&rq;, первое слово считается именем команды, остальные &md; параметрами к ней.</para>
+      <para>Особое значение имеют фигурные скобки: <symbol>{</symbol> и <symbol>}</symbol>. Всё, что заключено между скобками, включая пробелы и переводы строки, считается одним параметром. Скобки могут быть вложенными.</para>
+
+      <section>
+	<title>Класс <classname>ShellInterpreter</classname></title>
+	<para>Класс представляет собой собственно интерпретатор. Основной метод &md; <methodname>execCode()</methodname>.</para>
+	<methodsynopsis>
+	  <methodname>void ShellInterpreter::execCode(string commands)</methodname>
+	</methodsynopsis>
+	<para>Выполняет код, переданный с помощью строки <parameter>commands</parameter>.</para>
+
+	<para>Объект интерпретатора имеет список переменных (<varname>map&lt;string, string&gt; vars</varname>), заданных пользователем; функций (<varname>map&lt;string, string&gt; defs</varname>) </para>
+      </section>
+
+      <section>
+	<title>Класс-интерфейс <classname>ShellUser</classname> </title>
+	<para>Этот интерфейс реализуют (с помощью множественного наследования) классы, в которых присутствуют команды, выполняемые интерпретатором. Содержит всего один метод <methodname>onCommand</methodname>.</para>
+	<methodsynopsis>
+	  <methodname>virtual int onCommand(int cmdId, std::string &amp;command, std::list&lt;std::string&gt;</methodname>
+	</methodsynopsis>
+      </section>
+
+    </chapter>
+
 
 <!-- ************************************************************ -->
 <chapter id="mainclasses">
@@ -116,13 +154,14 @@
 
   <property>char tiles[width][height];</property>
   <para>Матрица с номерами клеток, соответствующие клеткам в спрайте <filename>tiles.png</filename></para>
+</section>
 
- ="Shape"><title><classname>Shape</classname></title>
+<section id="Shape">
+ <title><classname>Shape</classname></title>
  <para>Класс <classname>Shape</classname> содержится в файлах <filename>Shape.cpp</filename> и <filename>Shape.h</filename>.</para >
  <para>Определяет фигуру пентамино.</para>
  <para>Этот класс довольно прост. Имеет свойства <property>x</property>, <property>y</property> и <property>rot</property>, определяющие соответственно координаты и положение вращения фигуры.</para>
  <para>Шаблоны фигур заданы в файле <filename>shapes.cpp</filename>, автоматически сгенерированный с помощью <filename>_/genshapes.py</filename></para >
-
 </section>
 
 </chapter>
@@ -167,12 +206,18 @@
 </itemizedlist>
 </appendix>
 
-<bibliography>
-  <bibliomixed id="1">
+  <bibliography>
+    <bibliomixed id="1">
     <author>Бьярн Страустрап</author>,
     <title>Введение в язык C++</title>
   </bibliomixed>
-</bibliography>
+    <bibliomixed id="2">
+      <author>
+	Sam Lantinga
+      </author>,
+      <title>SDL Library Documentation</title>
+    </bibliomixed>
+  </bibliography>
 
 
 </book>
