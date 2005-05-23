@@ -1,6 +1,7 @@
-// $Id: GuiMenu.cpp,v 1.3 2005/05/20 15:45:30 kolen Exp $ 
+// $Id: GuiMenu.cpp,v 1.4 2005/05/23 14:17:25 kolen Exp $ 
 
 #include "GuiMenu.h"
+#include "GuiContainer.h"
 
 Sprite GuiMenu::gfx("menuitem.png");
 
@@ -87,8 +88,19 @@ GuiMenu::onMouseButton(char down, char button, int x, int y)
 {
   int sel = getInFocus();
   shell->execCode(items[sel].action);
-  setDirty();
+  bury(); 
+}
 
-  //FIXME:
-  //shell->execCode("MenuRemove");
+void
+GuiMenu::onClickOutside(char down, char button, int x, int y)
+{
+  bury();
+}
+
+void
+GuiMenu::bury()
+{
+  ((GuiContainer*)parent)->removeChild(this);
+  delete this;
+  setDirty();
 }

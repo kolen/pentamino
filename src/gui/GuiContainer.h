@@ -21,8 +21,11 @@ class GuiContainer: public GuiWidget
   virtual void onMouseButton(char down, char button, int x, int y);
   void onMouseMotion(char buttonstate, int x, int y, int dx, int dy);
   void onKeyboard(char down, SDL_keysym keysym);
+  void removeChild(GuiWidget*);
+  void setExclusive(GuiWidget*);
  private:
   GuiWidget *focusMouse;
+  GuiWidget *exclusive;
 };
 
 #endif

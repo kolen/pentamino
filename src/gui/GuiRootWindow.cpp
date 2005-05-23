@@ -26,6 +26,7 @@ GuiRootWindow::newmenuCreate()
       m->addItem(i->title, i->cmd);
     }
   addChild(m);
+  setExclusive(m);
 }
 
 int

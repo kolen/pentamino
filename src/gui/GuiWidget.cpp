@@ -9,6 +9,7 @@ GuiWidget::GuiWidget()
 {
   ;
 }
+
 void
 GuiWidget::onDraw()
 {
@@ -16,25 +17,11 @@ GuiWidget::onDraw()
   ;
 }
 
-void
-GuiWidget::onMouseButton(char down, char button, int x, int y)
-{
-  ;
-}
-
-void
-GuiWidget::onMouseMotion(char buttonstate, int x, int y, int dx, int dy)
-{
-  ;
-}
-
-void
-GuiWidget::onKeyboard(char down, SDL_keysym keysym)
-{
-  ;
-}
-
+void GuiWidget::onMouseButton(char down, char button, int x, int y){}
+void GuiWidget::onMouseMotion(char buttonstate, int x, int y, int dx, int dy){}
+void GuiWidget::onKeyboard(char down, SDL_keysym keysym){}
 void GuiWidget::onMouseFocus(char on){}
+void GuiWidget::onClickOutside(char d, char b, int x, int y){}
 
 void GuiWidget::setRect(Rectangle rect)
 {
