@@ -29,13 +29,7 @@ Main::Main()
   shell->registerCommand(this, "exit", 0);
 
   shell->execCode("exec default.cfg");
-  shell->execCode("menu fafik\n"
-                  "m+ SaveTest {save ooz.map}\n"
-                  "m+ LoadTest {load ooz.map}\n"
-                  "m+ EditTest {edit ooz.map}\n"
-                  "m+ Выход exit\n"
-                  "menu_end"
-                  );
+  shell->execCode("mainMenu");
 
   mainLoop();
   

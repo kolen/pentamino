@@ -1,7 +1,7 @@
 #ifndef GAMEFIELD_H
 #define GAMEFIELD_H
 
-// $Id: GameField.h,v 1.3 2005/05/20 15:42:18 kolen Exp $
+// $Id: GameField.h,v 1.4 2005/05/23 17:53:40 kolen Exp $
 
 
 #include "Shape.h"
@@ -55,6 +55,7 @@ class GameField: public ShellUser
   static const int CMD_save      = 1;
   static const int CMD_load      = 2;
   static const int CMD_edit      = 3;
+  static const int CMD_editnew   = 4;  
 };
 
 #endif

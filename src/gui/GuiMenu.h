@@ -1,7 +1,7 @@
 #ifndef GUIMENU_H
 #define GUIMENU_H
 
-// $Id: GuiMenu.h,v 1.3 2005/05/23 14:17:25 kolen Exp $
+// $Id: GuiMenu.h,v 1.4 2005/05/23 17:53:40 kolen Exp $
 
 #include "GuiWidget.h"
 #include "../Sprite.h"
@@ -34,6 +34,8 @@ class GuiMenu: public GuiWidget
   void onMouseButton(char, char, int, int);
   void onClickOutside(char down, char button, int x, int y);
   void bury();
+ 
+  string title;
  private:
   vector<MenuItem> items;
   int lastSelected;

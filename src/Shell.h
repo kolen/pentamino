@@ -1,7 +1,7 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-// $Id: Shell.h,v 1.7 2005/05/20 13:52:28 kolen Exp $
+// $Id: Shell.h,v 1.8 2005/05/23 17:53:40 kolen Exp $
 
 #include <istream>
 #include <map>
@@ -46,6 +46,7 @@ class ShellInterpreter: public ShellUser
   static const int CMD_def  = 2;
   static const int CMD_if   = 3;
   static const int CMD_exec = 4;
+  static const int CMD_echo = 5;
 };
 
 

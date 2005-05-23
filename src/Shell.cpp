@@ -1,4 +1,4 @@
-// $Id: Shell.cpp,v 1.10 2005/05/20 15:43:50 kolen Exp $
+// $Id: Shell.cpp,v 1.11 2005/05/23 17:53:40 kolen Exp $
 #include "Shell.h"
 #include "File.h"
 #include <iostream>
@@ -30,11 +30,13 @@ ShellInterpreter::execCode(string commands)
 	{
           if (state == S_BRACKET) {
             cur_arg += c;
-          }              
+          }    
           else 
           { 
             if (cur_arg != "")
               args.push_back(cur_arg);
+            if (args.size() == 0)
+              continue;
             cur_arg = "";
 	    doCommand(args);
 	    args.clear();
@@ -60,6 +62,7 @@ ShellInterpreter::execCode(string commands)
 	  if (state == S_BRACKET)
 	    {
 	      depth++;
+              cur_arg += c;
 	    }
 	  else if (state == S_WORD)
 	    {              
@@ -165,6 +168,7 @@ ShellInterpreter::ShellInterpreter()
   registerCommand(this, "def", CMD_def);
   registerCommand(this, "if", CMD_if);
   registerCommand(this, "exec", CMD_exec);
+  registerCommand(this, "echo", CMD_echo);
   
 }
 
@@ -205,12 +209,22 @@ ShellInterpreter::onCommand(int cmdId, string &command, list<string> &args)
       CHKARGS(1);
       string filename = POPARG;
       filename = path(filename);
-      string code;
-      stringstream ss(code);
+      ostringstream ss;
       ifstream f(filename.c_str());
+      if (!f) {
+        cerr << "Couldn't exec "<<filename << endl;
+        break;
+      }
       ss << f.rdbuf();
-      execCode(code);
+      cerr << "Execing " << filename  << endl;
+      execCode(ss.str());
       break;
+      }
+    case CMD_echo:
+      {
+      CHKARGS(1);
+      string arg = POPARG;
+      cerr << arg << endl;
       }
     }
 }

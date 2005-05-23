@@ -1,4 +1,4 @@
-// $Id: GameField.cpp,v 1.3 2005/05/20 15:42:18 kolen Exp $
+// $Id: GameField.cpp,v 1.4 2005/05/23 17:53:40 kolen Exp $
 
 #include "GameField.h"
 #include "File.h"
@@ -28,6 +28,7 @@ GameField::GameField()
   shell->registerCommand(this, "save", CMD_save);
   shell->registerCommand(this, "load", CMD_load);
   shell->registerCommand(this, "edit", CMD_edit);
+  shell->registerCommand(this, "editnew", CMD_editnew);
 }
 
 void
@@ -226,6 +227,11 @@ GameField::onCommand(int cmdId, std::string &command, std::list<std::string> &ar
       loadFile(file, cmdId==CMD_edit);
       break;
       }
-    
+    case CMD_editnew:
+      {
+      CHKARGS(0);
+      clear(1);
+      break;
+      }
   }
 }

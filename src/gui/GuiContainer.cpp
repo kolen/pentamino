@@ -32,7 +32,6 @@ void
 GuiContainer::onMouseButton(char down, char button, int x, int y)
 {
   if (exclusive) {
-    cerr << "Excl";
     if (exclusive->rect.in(x, y))
       exclusive->onMouseButton(down, button, x, y);
     else

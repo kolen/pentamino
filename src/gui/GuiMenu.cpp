@@ -1,4 +1,4 @@
-// $Id: GuiMenu.cpp,v 1.4 2005/05/23 14:17:25 kolen Exp $ 
+// $Id: GuiMenu.cpp,v 1.5 2005/05/23 17:53:40 kolen Exp $ 
 
 #include "GuiMenu.h"
 #include "GuiContainer.h"
@@ -46,6 +46,7 @@ GuiMenu::onDraw()
   gfx.draw(rect.x, rect.y + (ii+1)*MENULINEHEIGHT,
 	        &gfx_area_footer);
   gfx.draw(rect.x, rect.y, &gfx_area_header);
+  draw.text(title, rect.x+MENUTEXTOFFSET_X*2, rect.y+MENUTEXTOFFSET_Y);
 }
 
 int
