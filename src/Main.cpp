@@ -121,6 +121,12 @@ int Main::initSDL()
     exit(1);
   }
 
+#ifndef PACKAGE_STRING
+#define PACKAGE_STRING "Pentamino"
+#endif
+
+  SDL_WM_SetCaption(PACKAGE_STRING, PACKAGE_STRING);
+
 }
 
 int 

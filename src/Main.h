@@ -1,6 +1,10 @@
 #ifndef PENTA_MAIN_H
 #define PENTA_MAIN_H
 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
+
 #include <SDL/SDL.h>
 #include "SDLInterface.h"
 #include "gui/GuiRootWindow.h"

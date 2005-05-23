@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="koi8-r" ?>
+<chapter id="usermanual">
+<title>Инструкция для пользователя</title>
+
+<section id="usermanual-mouse"><title>Управление мышью</title>
+<itemizedlist>
+ <listitem>Чтобы взять фигуру с поля, нажмите на него или на символ, соответствующий ей на кнопках справа, левой кнопкой мыши</listitem >
+ <listitem>Чтобы вращать фигуру, нажмите правую кнопку мыши. Также вращать можно колесиком.</listitem >
+ <listitem>Чтобы перевернуть фигуру, нажмите среднюю кнопку мыши.</listitem >
+</itemizedlist>
+</section>
+
+
+</chapter>

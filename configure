@@ -1644,11 +1644,6 @@ INSTALL_STRIP_PROGRAM="\${SHELL} \$(install_sh) -c -s"
 
 
 #AM_CONFIG_SRCDIR([src/Main.cpp])
-
-cat >>confdefs.h <<\_ACEOF
-#define DATADIR $datadir
-_ACEOF
-
           ac_config_headers="$ac_config_headers src/config.h"
 
 

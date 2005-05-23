@@ -5,7 +5,6 @@
 AC_INIT(pentamino, 0.1.1, [kolen@nm.ru])
 AM_INIT_AUTOMAKE(pentamino, 0.1.1)
 #AM_CONFIG_SRCDIR([src/Main.cpp])
-AC_DEFINE(DATADIR, $datadir, [/share])
 AM_CONFIG_HEADER(src/config.h)
 
 # Checks for programs.

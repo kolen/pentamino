@@ -25,7 +25,6 @@ class GuiRootWindow: public GuiContainer, public ShellUser
     {
       field.setGameField(gf);
       shapeSel.setGameField(gf);
-      std::cerr << "sgf!\n";
     }
   int onCommand(int, std::string&, std::list<std::string>&);
   void newmenuCreate();

@@ -1,6 +1,6 @@
 #ifndef I18N_H
 #define I18N_H
-/* $Id: I18n.h,v 1.3 2005/05/20 14:57:33 kolen Exp $ */
+/* $Id: I18n.h,v 1.4 2005/05/23 11:20:27 kolen Exp $ */
 
 #include <map>
 #include <string>
@@ -14,7 +14,6 @@ class I18n: public ShellUser
 public:
   I18n() {
     shell->registerCommand(this, "string", 0);
-    cerr << "i18n init" << endl;
   }
   void addString(string id, string translation);
   string& _(string id) 

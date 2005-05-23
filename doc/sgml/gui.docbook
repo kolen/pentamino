@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="koi8-r" ?>
+<!-- ************************************************************ -->
+<chapter id="gui">
+<title>Графический интерфейс пользователя (GUI)</title>
+
+<section><title>Класс <classname>GuiWidget</classname></title >
+
+<para>Класс <classname>GuiWidget</classname> &md; класс, от которого унаследованы все остальные классы окон GUI.</para >
+
+</section>
+
+
+</chapter>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="koi8-r" ?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd"
+[ <!ENTITY lq "&#171;">
+  <!ENTITY rq "&#187;">
+  <!ENTITY md "&#8212;">
+  <!ENTITY usermanual SYSTEM "usermanual.docbook">
+  <!ENTITY gui        SYSTEM "gui.docbook">
+]>
+<book lang="ru">
+
+<bookinfo>
+<title>Пентамино</title>
+
+ <author>
+  <firstname>Мочалов</firstname>
+  <surname>Константин</surname>
+ </author>
+
+<abstract>
+<para>
+Курсовая работа по предмету &lq;Системное и прикладное программное обеспечение&rq;
+</para>
+</abstract>
+
+</bookinfo>
+
+<part><title>Исходная задача</title>
+
+<!-- ************************************************************ -->
+<chapter id="1-problem">
+<title>Исходная задача</title>
+
+<para>Реализовать игру &lq;Пентамино&rq;: перемещение фигур из 5 квадратных элементов с целью заполнения определенной фигуры</para>
+
+</chapter>
+</part>
+
+
+
+<part><title>Реализация</title>
+
+<!-- ************************************************************ -->
+<chapter id="2-implementation">
+<title>Реализация</title>
+
+<section><title>Общие сведения</title>
+<para>Программа написана на языке программирования C++ с использованием стандартной библиотеки шаблонов. Для вывода графики и обработки устройств ввода используется библиотека libSDL (Simple DirectMedia Layer), являющаяся прослойкой между программой и функциями работы с устройствами различных операционных систем и аппаратных платформ. </para>
+
+<para>Программа может быть собрана и запущктного GuiWidget.</para>
+
+<para>Для автоматизированной сборки программы под POSIX-совместимыми системами используется система autoconf.</para >
+
+</section>
+
+</chapter>
+
+<!-- ************************************************************ -->
+<chapter id="3-structure">
+<title>Структура программы</title>
+
+<para>Программа состоит из множества файлов исходного текста. Файлы с кодом функций имеют расширение <filename>.cpp</filename>, заголовочные &md; <filename>.h</filename>.Как правило, имя файла соответстсвует имени класса, однако в нескольких случаях в одном файле было задано несколько классов. </para >
+
+<para>Исходный код проекта содержится в каталоге <filename>src</filename>.</para >
+
+<section id="Main-class"><title>Класс <classname>Main</classname></title>
+<para>Класс Main &md; содержится в файлах <filename>Main.cpp</filename> и <filename>Main.h</filename>. В <filename>Main.cpp</filename> также определена функция <function>main()</function>.</para>
+
+<para>В этом классе производится инициализация графической подсистемы и обработка сообщений.</para >
+
+<para>В функции <function>main()</function> создается один экземпляр класса <classname>Main</classname></para >
+</section>
+
+<section id="Service-h"><title><filename>Service.h</filename></title>
+
+<para>Файл service.h содержит определение следующих классов:</para >
+<itemizedlist>
+ <listitem><classname>Rectangle</classname></listitem>
+ <listitem><classname>Point</classname></listitem>
+</itemizedlist>
+
+<para>Они используются как специальные типы &md; прямоугольная область и координаты точки.</para >
+
+</section>
+
+</chapter>
+
+&gui;
+
+<!-- ************************************************************ -->
+<chapter id="mainclasses">
+<title>Основные классы, описывающие игровую ситуацию</title>
+
+<section id="GameField"><title><classname>GameField</classname></title>
+  <para>Класс определяет клетчатое поле, на которую помещаются фигуры пентамино.</para >
+  <para>Основные методы класса:</para>
+  <methodname>void updateShape(int num);</methodname>
+  <para>Устанавливает фигуру (с номером <parameter>num</parameter>) на поле; у фигуры предварительно должны быть проставлены свойства <property>x</property>, <property>y</property> и <property>rot</property>.</para >
+
+  <methodname>void removeShape(int num);</methodname>
+  <para>Удаляет фигуру с поля.</para >
+
+  <methodname>int tryFit(int n, int x, int y);</methodname>
+  <para>Проверяет, войдет ли фигура n на поле по координатам x и y.</para>
+
+  <methodname>int loadFile(std::string filename, bool edit = false);</methodname>
+  <para>Загружает поле из файла</para >
+  <para>Если установлен параметр <parameter>edit</parameter>, то файл открывается на редактирование.</para >
+
+  <methodname>int saveFile(std::string filename);</methodname>
+  <para>Сохраняет поле в файл</para >
+
+  <para>Основные свойства:</para >
+
+  <property>Shape shapes[12];</property>
+  <para>Фигуры.</para >
+
+  <property>char tiles[width][height];</property>
+  <para>Матрица с номерами клеток, соответствующие клеткам в спрайте <filename>tiles.png</filename></para>
+
+ ="Shape"><title><classname>Shape</classname></title>
+ <para>Класс <classname>Shape</classname> содержится в файлах <filename>Shape.cpp</filename> и <filename>Shape.h</filename>.</para >
+ <para>Определяет фигуру пентамино.</para>
+ <para>Этот класс довольно прост. Имеет свойства <property>x</property>, <property>y</property> и <property>rot</property>, определяющие соответственно координаты и положение вращения фигуры.</para>
+ <para>Шаблоны фигур заданы в файле <filename>shapes.cpp</filename>, автоматически сгенерированный с помощью <filename>_/genshapes.py</filename></para >
+
+</section>
+
+</chapter>
+
+</part>
+
+
+<!--
+              ******** PART III *********
+			                     -->
+<part> <title>Использование программы</title>
+
+<!-- ************************************************************ -->
+<chapter id="building">
+<title>Сборка программы из исходных текстов</title>
+
+<section id="build-unix"><title>Сборка под UNIX-подобными системами</title>
+<orderedlist>
+<listitem>Убедитесь, что у вас имеется компилятор C++ и библиотеки libSDL и libSDL_image.</listitem >
+<listitem>Распакуйте архив с исходным кодом программы</listitem >
+<listitem>Выполните <command>./configure</command> в каталоге программы (у <command>configure</command> имеются различные опции, узнать можно, запустив с ключом <parameter>--help</parameter>.</listitem >
+<listitem>Выполните <command>make</command></listitem >
+<listitem>Выполните <command>make install</command>, если хотите установить в системный каталог.</listitem>
+</orderedlist>
+
+</section>
+
+</chapter>
+
+<!-- ************************************************************ -->
+&usermanual;
+
+
+<!-- End of part 3 -->
+</part>
+
+<appendix>
+<title>Ссылки</title>
+<itemizedlist>
+<listitem><ulink url="http://www.libsdl.org">Сайт библиотеки libSDL (Simple DirectMedia Layer).</ulink></listitem>
+<listitem><ulink url="http://www.mingw.org">MinGW</ulink></listitem>
+</itemizedlist>
+</appendix>
+
+<bibliography>
+  <bibliomixed id="1">
+    <author>Бьярн Страустрап</author>,
+    <title>Введение в язык C++</title>
+  </bibliomixed>
+</bibliography>
+
+
+</book>

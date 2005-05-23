@@ -1,0 +1,16 @@
+#!/bin/sh
+
+#stylesheet=/usr/share/sgml/docbook/xsl-stylesheets-1.61.2-2.1/xhtml/chunk.xsl
+stylesheet=../sgml/style.xsl
+source=../sgml/Penta.docbook
+output_encoding=koi8-r
+
+
+cd html || mkdir html
+xsltproc \
+  --nonet \
+  --stringparam chunker.output.encoding $output_encoding \
+  --param section.label.includes.component.label 1 \
+  $stylesheet \
+  $source
+
