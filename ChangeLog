@@ -1,129 +1,107 @@
+2005-05-23  kolen@localhost.localdomain  <kolen@localhost.localdomain>
+
+	* gui/GuiContainer.cpp, gui/GuiContainer.h, gui/GuiMenu.cpp, gui/GuiMenu.h, gui/GuiRootWindow.cpp, gui/GuiWidget.cpp, gui/GuiWidget.h:
+	+ Menus now disappear when clicked
+	+ Added exclusive mode to GuiContainer
+	+ Added parent, parentPos to GuiWidget
+
+	* I18n.h, Main.cpp, Main.h, Makefile.in, config.h, config.h.in, gui/GuiRootWindow.h, gui/Makefile.in:
+	Added docs
+
 2005-05-20  kolen@localhost.localdomain  <kolen@localhost.localdomain>
 
-	* src/gui/GuiMenu.cpp: Added redraw on click
+	* Makefile.in, gui/Makefile.in: Added maps directory
 
-	* src/gui/GuiDrawContext.cpp: Fixed char > 127 drawing
+	* Makefile.in, config.h, gui/Makefile.in: Changed ver number
 
-	* src/Shell.cpp: Bugfixes
+	* gui/GuiMenu.cpp: Added redraw on click
 
-	* src/Main.cpp: Hacks
+	* gui/GuiDrawContext.cpp: Fixed char > 127 drawing
 
-	* src/GameField.cpp, src/GameField.h: Added saveFile()
+	* Shell.cpp: Bugfixes
+
+	* Main.cpp: Hacks
+
+	* GameField.cpp, GameField.h: Added saveFile()
 	Added load, save, edit commands
 	Added isEditing flag
 	Fixed clear in loadFile
 
-	* penta.prj: *** empty log message ***
+	* gui/GuiRootWindow.cpp, gui/GuiRootWindow.h: fixed onCommand()
 
-	* src/gui/GuiRootWindow.cpp, src/gui/GuiRootWindow.h: fixed onCommand()
+	* Main.cpp: Added exit command
 
-	* src/Main.cpp: Added exit command
+	* I18n.h: Fixed onCommand; Fixed _()
 
-	* src/I18n.h: Fixed onCommand; Fixed _()
+	* I18n.cpp: Fixed onCommand
 
-	* src/I18n.cpp: Fixed onCommand
+	* Shell.cpp: Fix: '\n' behavior
 
-	* ChangeLog: *** empty log message ***
-
-	* src/Shell.cpp: Fix: '\n' behavior
-
-	* src/gui/GuiRootWindow.cpp, src/gui/GuiRootWindow.h:
+	* gui/GuiRootWindow.cpp, gui/GuiRootWindow.h:
 	Bound 'menu, m+, menu_end' to GuiRootWindow
 
-	* src/Main.cpp, src/Shell.h: "exec default.cfg"
+	* Main.cpp, Shell.h: "exec default.cfg"
 
-	* src/Shell.cpp: Some fixes
+	* Shell.cpp: Some fixes
 
-	* src/Shell.cpp: Fixed path
+	* Shell.cpp: Fixed path
 
-	* src/Shell.cpp, src/Shell.h: Shell improvements
+	* Shell.cpp, Shell.h: Shell improvements
 
-	* src/Main.cpp, src/Main.h: Removed trash
+	* Main.cpp, Main.h: Removed trash
 
-	* img/.cvsignore, Makefile.am, Makefile.in, configure, configure.ac, penta.prj, src/I18n.cpp, src/I18n.h, src/Main.cpp:
-	*** empty log message ***
+	* I18n.cpp, I18n.h, Main.cpp: *** empty log message ***
 
-	* img/Makefile.am, img/Makefile.in, img/menuitem.png: New files in img/
-
-	* src/gui/.cvsignore, src/.cvsignore, src/I18n.cpp, src/I18n.h, src/Makefile.am, src/Makefile.in:
+	* gui/.cvsignore, .cvsignore, I18n.cpp, I18n.h, Makefile.am, Makefile.in:
 	New I18n class
 
-	* src/gui/Makefile.am, src/gui/Makefile.in, src/File.cpp, src/Main.cpp, src/Makefile.am, src/Makefile.in, src/config.h:
+	* gui/Makefile.am, gui/Makefile.in, File.cpp, Main.cpp, Makefile.am, Makefile.in, config.h:
 	Directory search from autoconf.
 	Fixed missing files in "make install"
 	Added install
 
 2005-05-19  kolen@localhost.localdomain  <kolen@localhost.localdomain>
 
-	* src/gui/GuiMenu.cpp, src/gui/GuiMenu.h: Fixes. Added onMouseButton().
+	* gui/GuiMenu.cpp, gui/GuiMenu.h: Fixes. Added onMouseButton().
 
-	* src/Shell.cpp, src/Shell.h: Added global 'shell' variable
+	* Shell.cpp, Shell.h: Added global 'shell' variable
 
-	* src/gui/GuiContainer.cpp:
+	* gui/GuiContainer.cpp:
 	Fixed behavior of onMouseMotion and onMouseButton to reverse looping thru list
 
-	* src/gui/GuiMenu.cpp, src/gui/GuiMenu.h: new GuiMenu class
+	* gui/GuiMenu.cpp, gui/GuiMenu.h: new GuiMenu class
 
-	* src/gui/Makefile.am, src/gui/Makefile.in: Added GuiMenu.cpp/.h
+	* gui/Makefile.am, gui/Makefile.in: Added GuiMenu.cpp/.h
 
-	* src/gui/GuiDrawContext.cpp, src/gui/GuiDrawContext.h:
-	Added textLength()
+	* gui/GuiDrawContext.cpp, gui/GuiDrawContext.h: Added textLength()
 
 2005-05-17  kolen@localhost.localdomain  <kolen@localhost.localdomain>
 
-	* src/GameField.cpp, src/GameField.h: Added loading of map files
+	* GameField.cpp, GameField.h: Added loading of map files
 	GameField::loadFile
 
-	* doc/.cvsignore, src/.cvsignore, .cvsignore, src/Main.cpp, src/gui/.cvsignore:
-	*** empty log message ***
+	* .cvsignore, Main.cpp, gui/.cvsignore: *** empty log message ***
 
-	* src/Shell.cpp: Fixed '{' & '}'
+	* Shell.cpp: Fixed '{' & '}'
 
-	* src/Shell.cpp: fixed newline char behavior
+	* Shell.cpp: fixed newline char behavior
 
-	* src/Shell.h: Fixed newline char behavior
+	* Shell.h: Fixed newline char behavior
 
-	* src/Shell.h: Fixed ShellGlobals
+	* Shell.h: Fixed ShellGlobals
 
-	* ChangeLog, penta.prj, src/Main.cpp, src/Main.h, src/Shell.cpp:
-	Some changes in Shell
+	* Main.cpp, Main.h, Shell.cpp: Some changes in Shell
 
-	* src/Shell.h: Removed ShellGlobals
+	* Shell.h: Removed ShellGlobals
 	Modified cmd model
 
 2005-05-16  kolen@localhost.localdomain  <kolen@localhost.localdomain>
 
-	* src/File.cpp: Removed some dbg messages
+	* File.cpp: Removed some dbg messages
 
-	* _/genshapes.py: Added.
-
-	* AUTHORS, COPYING, ChangeLog, INSTALL, NEWS, README, aclocal.m4, config.cache, depcomp, doc/Makefile.am, doc/Makefile.in, doc/TEST, img/font.png, img/menu.png, img/shapes.png, img/test.png, img/tiles.png, install-sh, missing, mkinstalldirs, penta.prj.13723, src/File.cpp, src/File.h, src/GameField.cpp, src/GameField.h, src/Main.cpp, src/Main.h, src/Makefile.am, src/Makefile.in, src/SDLInterface.cpp, src/SDLInterface.h, src/Service.h, src/Shape.cpp, src/Shape.h, src/Shell.cpp, src/Shell.h, src/Sprite.cpp, src/Sprite.h, src/config.h, src/config.h.in, src/gui/GuiContainer.cpp, src/gui/GuiContainer.h, src/gui/GuiDrawContext.cpp, src/gui/GuiDrawContext.h, src/gui/GuiField.cpp, src/gui/GuiField.h, src/gui/GuiMenubar.cpp, src/gui/GuiMenubar.h, src/gui/GuiRootWindow.cpp, src/gui/GuiRootWindow.h, src/gui/GuiShapeSel.cpp, src/gui/GuiShapeSel.h, src/gui/GuiWidget.cpp, src/gui/GuiWidget.h, src/gui/Makefile.am, src/gui/Makefile.in, src/shapes.cpp, src/stamp-h1, stamp-h1, testrun.sh:
+	* File.cpp, File.h, GameField.cpp, GameField.h, Main.cpp, Main.h, Makefile.am, Makefile.in, SDLInterface.cpp, SDLInterface.h, Service.h, Shape.cpp, Shape.h, Shell.cpp, Shell.h, Sprite.cpp, Sprite.h, config.h, config.h.in, gui/GuiContainer.cpp, gui/GuiContainer.h, gui/GuiDrawContext.cpp, gui/GuiDrawContext.h, gui/GuiField.cpp, gui/GuiField.h, gui/GuiMenubar.cpp, gui/GuiMenubar.h, gui/GuiRootWindow.cpp, gui/GuiRootWindow.h, gui/GuiShapeSel.cpp, gui/GuiShapeSel.h, gui/GuiWidget.cpp, gui/GuiWidget.h, gui/Makefile.am, gui/Makefile.in, shapes.cpp, stamp-h1:
 	Imported
 
-	* AUTHORS, COPYING, ChangeLog, INSTALL, NEWS, README, aclocal.m4, config.cache, depcomp, doc/Makefile.am, doc/Makefile.in, doc/TEST, img/font.png, img/menu.png, img/shapes.png, img/test.png, img/tiles.png, install-sh, missing, mkinstalldirs, penta.prj.13723, src/File.cpp, src/File.h, src/GameField.cpp, src/GameField.h, src/Main.cpp, src/Main.h, src/Makefile.am, src/Makefile.in, src/SDLInterface.cpp, src/SDLInterface.h, src/Service.h, src/Shape.cpp, src/Shape.h, src/Shell.cpp, src/Shell.h, src/Sprite.cpp, src/Sprite.h, src/config.h, src/config.h.in, src/gui/GuiContainer.cpp, src/gui/GuiContainer.h, src/gui/GuiDrawContext.cpp, src/gui/GuiDrawContext.h, src/gui/GuiField.cpp, src/gui/GuiField.h, src/gui/GuiMenubar.cpp, src/gui/GuiMenubar.h, src/gui/GuiRootWindow.cpp, src/gui/GuiRootWindow.h, src/gui/GuiShapeSel.cpp, src/gui/GuiShapeSel.h, src/gui/GuiWidget.cpp, src/gui/GuiWidget.h, src/gui/Makefile.am, src/gui/Makefile.in, src/shapes.cpp, src/stamp-h1, stamp-h1, testrun.sh:
-	New file.
-
-	* Makefile.am, Makefile.in, configure, configure.ac, penta.prj:
-	Imported
-
-	* Makefile.am, Makefile.in, configure, configure.ac, penta.prj:
-	New file.
-
-2005-05-16  kolen@localhost.localdomain  <kolen@localhost.localdomain>
-
-	* src/File.cpp: Removed some dbg messages
-
-	* _/genshapes.py: Added.
-
-	* AUTHORS, COPYING, ChangeLog, INSTALL, NEWS, README, aclocal.m4, autodia.out.xml, config.cache, depcomp, doc/Makefile, doc/Makefile.am, doc/Makefile.in, doc/TEST, img/font.png, img/menu.png, img/shapes.png, img/test.png, img/tiles.png, install-sh, missing, mkinstalldirs, penta.prj.13723, penta.pws, src/File.cpp, src/File.h, src/GameField.cpp, src/GameField.h, src/Main.cpp, src/Main.h, src/Makefile, src/Makefile.am, src/Makefile.in, src/SDLInterface.cpp, src/SDLInterface.h, src/Service.h, src/Shape.cpp, src/Shape.h, src/Shell.cpp, src/Shell.h, src/Sprite.cpp, src/Sprite.h, src/config.h, src/config.h.in, src/gui/GuiContainer.cpp, src/gui/GuiContainer.h, src/gui/GuiDrawContext.cpp, src/gui/GuiDrawContext.h, src/gui/GuiField.cpp, src/gui/GuiField.h, src/gui/GuiMenubar.cpp, src/gui/GuiMenubar.h, src/gui/GuiRootWindow.cpp, src/gui/GuiRootWindow.h, src/gui/GuiShapeSel.cpp, src/gui/GuiShapeSel.h, src/gui/GuiWidget.cpp, src/gui/GuiWidget.h, src/gui/Makefile, src/gui/Makefile.am, src/gui/Makefile.in, src/shapes.cpp, src/stamp-h1, stamp-h1, testrun.sh:
-	Imported
-
-	* AUTHORS, COPYING, ChangeLog, INSTALL, NEWS, README, aclocal.m4, autodia.out.xml, config.cache, depcomp, doc/Makefile, doc/Makefile.am, doc/Makefile.in, doc/TEST, img/font.png, img/menu.png, img/shapes.png, img/test.png, img/tiles.png, install-sh, missing, mkinstalldirs, penta.prj.13723, penta.pws, src/File.cpp, src/File.h, src/GameField.cpp, src/GameField.h, src/Main.cpp, src/Main.h, src/Makefile, src/Makefile.am, src/Makefile.in, src/SDLInterface.cpp, src/SDLInterface.h, src/Service.h, src/Shape.cpp, src/Shape.h, src/Shell.cpp, src/Shell.h, src/Sprite.cpp, src/Sprite.h, src/config.h, src/config.h.in, src/gui/GuiContainer.cpp, src/gui/GuiContainer.h, src/gui/GuiDrawContext.cpp, src/gui/GuiDrawContext.h, src/gui/GuiField.cpp, src/gui/GuiField.h, src/gui/GuiMenubar.cpp, src/gui/GuiMenubar.h, src/gui/GuiRootWindow.cpp, src/gui/GuiRootWindow.h, src/gui/GuiShapeSel.cpp, src/gui/GuiShapeSel.h, src/gui/GuiWidget.cpp, src/gui/GuiWidget.h, src/gui/Makefile, src/gui/Makefile.am, src/gui/Makefile.in, src/shapes.cpp, src/stamp-h1, stamp-h1, testrun.sh:
-	New file.
-
-	* Makefile, Makefile.am, Makefile.in, config.log, config.status, configure, configure.ac, penta.prj:
-	Imported
-
-	* Makefile, Makefile.am, Makefile.in, config.log, config.status, configure, configure.ac, penta.prj:
+	* File.cpp, File.h, GameField.cpp, GameField.h, Main.cpp, Main.h, Makefile.am, Makefile.in, SDLInterface.cpp, SDLInterface.h, Service.h, Shape.cpp, Shape.h, Shell.cpp, Shell.h, Sprite.cpp, Sprite.h, config.h, config.h.in, gui/GuiContainer.cpp, gui/GuiContainer.h, gui/GuiDrawContext.cpp, gui/GuiDrawContext.h, gui/GuiField.cpp, gui/GuiField.h, gui/GuiMenubar.cpp, gui/GuiMenubar.h, gui/GuiRootWindow.cpp, gui/GuiRootWindow.h, gui/GuiShapeSel.cpp, gui/GuiShapeSel.h, gui/GuiWidget.cpp, gui/GuiWidget.h, gui/Makefile.am, gui/Makefile.in, shapes.cpp, stamp-h1:
 	New file.
 
