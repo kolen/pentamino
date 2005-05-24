@@ -1,4 +1,4 @@
-// $Id: GuiMenu.cpp,v 1.5 2005/05/23 17:53:40 kolen Exp $ 
+// $Id: GuiMenu.cpp,v 1.6 2005/05/24 14:03:34 kolen Exp $ 
 
 #include "GuiMenu.h"
 #include "GuiContainer.h"
@@ -87,15 +87,19 @@ GuiMenu::onMouseMotion(char button, int x, int y, int dx, int dy)
 void
 GuiMenu::onMouseButton(char down, char button, int x, int y)
 {
-  int sel = getInFocus();
-  shell->execCode(items[sel].action);
-  bury(); 
+  if (down) {
+    int sel = getInFocus();
+    if (sel == -1) return;
+    shell->execCode(items[sel].action);
+    bury(); 
+  }
 }
 
 void
 GuiMenu::onClickOutside(char down, char button, int x, int y)
 {
-  bury();
+  if (down)
+    bury();
 }
 
 void

@@ -1,7 +1,10 @@
 #include "GuiRootWindow.h"
-
+#include <sys/types.h>
+#include <dirent.h>
 #include <iostream>
+
 #include "../I18n.h"
+#include "../File.h"
 using namespace std;
 
 GuiRootWindow::GuiRootWindow()
@@ -14,6 +17,7 @@ GuiRootWindow::GuiRootWindow()
   shell->registerCommand(this, "menu", CMD_menu);
   shell->registerCommand(this, "m+", CMD_mplus);
   shell->registerCommand(this, "menu_end", CMD_menuend);
+  shell->registerCommand(this, "filemenu", CMD_filemenu);
 }
 
 void
@@ -60,6 +64,41 @@ GuiRootWindow::onCommand(int cmdId, string &command, list<string>& args)
     {
     CHKARGS(0);
     newmenuCreate();
+    break;
+    }
+  case CMD_filemenu:
+    {
+    CHKARGS(3);
+    string action = POPARG;
+    string title = POPARG;
+    string dir = POPARG;
+    fileMenu(action, title, dir);
+    break;
     }
   }
+}
+
+void
+GuiRootWindow::fileMenu(string action, string title, string dir1)
+{
+  DIR *dir = opendir(path(dir1).c_str());
+  if (!dir) return;
+  dirent *de;
+  string dname;
+
+  shell->execCode("menu "+title+" 200 16");
+
+  while (de = readdir(dir))
+    {
+      dname = de->d_name;    
+      int pos = dname.rfind(".map");
+      if (pos==dname.size()-4 && pos != -1)
+        shell->execCode((string)"m+ "+dname+" {"+action+" "+dname+"}");
+      else if(de->d_type == DT_DIR)
+        {
+          shell->execCode((string)"m+ "+dname+" {filemenu "+
+          action+" "+title+" "+dir1+"/"+dname+"}");
+        }
+    }
+  shell->execCode("menu_end");
 }

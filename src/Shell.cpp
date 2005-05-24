@@ -1,4 +1,4 @@
-// $Id: Shell.cpp,v 1.11 2005/05/23 17:53:40 kolen Exp $
+// $Id: Shell.cpp,v 1.12 2005/05/24 14:03:34 kolen Exp $
 #include "Shell.h"
 #include "File.h"
 #include <iostream>
@@ -116,8 +116,10 @@ ShellInterpreter::execCode(string commands)
 	}
     }
 
-  args.push_back(cur_arg);
-  doCommand(args);
+  if (cur_arg != "")
+    args.push_back(cur_arg);
+  if (args.size())
+    doCommand(args);
 }
 
 void

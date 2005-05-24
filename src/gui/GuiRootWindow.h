@@ -32,7 +32,9 @@ class GuiRootWindow: public GuiContainer, public ShellUser
   static const int CMD_menu    = 1;
   static const int CMD_mplus   = 2;
   static const int CMD_menuend = 3;
+  static const int CMD_filemenu= 4;
 private:
+  void fileMenu(string, string, string);
   string newmenu_title;
   int newmenu_pos[2];
   struct mitem{

@@ -83,6 +83,5 @@ GuiContainer::GuiContainer()
 void
 GuiContainer::setExclusive(GuiWidget* w)
 {
-  if (exclusive) return;
   exclusive = w;
 }
