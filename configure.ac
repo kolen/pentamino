@@ -29,4 +29,4 @@ AC_CHECK_LIB(SDL_image, IMG_Load)
 #AC_CHECK_FUNCS([atexit])
 
 #AC_CONFIG_FILES([src/Makefile])
-AC_OUTPUT(Makefile src/Makefile src/gui/Makefile doc/Makefile img/Makefile maps/Makefile)
+AC_OUTPUT(Makefile src/Makefile src/gui/Makefile doc/Makefile img/Makefile maps/Makefile penta.spec)
