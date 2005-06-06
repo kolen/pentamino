@@ -44,9 +44,19 @@
 <title>Реализация</title>
 
 <section><title>Общие сведения</title>
-<para>Программа написана на языке программирования C++ с использованием стандартной библиотеки шаблонов. Для вывода графики и обработки устройств ввода используется библиотека libSDL (Simple DirectMedia Layer), являющаяся прослойкой между программой и функциями работы с устройствами различных операционных систем и аппаратных платформ. </para>
-
-<para>Для автоматизированной сборки программы под POSIX-совместимыми системами используется система autoconf.</para >
+<para>Программа написана на языке программирования C++ с
+использованием стандартной библиотеки STL. Для вывода графики и
+обработки устройств ввода используется библиотека libSDL (Simple
+DirectMedia Layer), являющаяся прослойкой между программой и функциями
+работы с устройствами различных операционных систем и аппаратных
+платформ.</para>
+	<para>Используется объектно-ориентный подход. В программу
+включены простые графический интерфейс пользователя (GUI) и интерпретатор.</para>
+	<para>Программа может быть собрана под различными системами и
+аппаратными платформами. Тестировалась только под GNU/Linux на i386.</para>
+<para>Для автоматизированной сборки программы под POSIX-совместимыми
+системами используется система autoconf. Есть spec-файлы для сборки
+rpm-пакетов.</para >
 
 </section>
 
@@ -93,37 +103,6 @@
 
 </chapter>
 
-&gui;
-
-<!-- ************************************************************ -->
-    <chapter id="shell">
-      <title>Встроенный интерпретатор</title>
-      <para>Встроенный интерпретатор (<filename>Shell.cpp</filename>, <filename>Shell.h</filename>) служит для выполнения команд, связывающих объекты внутри программы.</para>
-      <para>Интерпретатор устроен очень минималистически. Синтаксис прост: код, который необходимо выполнить, делится на строки, строки делятся на &lq;слова&rq;, первое слово считается именем команды, остальные &md; параметрами к ней.</para>
-      <para>Особое значение имеют фигурные скобки: <symbol>{</symbol> и <symbol>}</symbol>. Всё, что заключено между скобками, включая пробелы и переводы строки, считается одним параметром. Скобки могут быть вложенными.</para>
-
-      <section>
-	<title>Класс <classname>ShellInterpreter</classname></title>
-	<para>Класс представляет собой собственно интерпретатор. Основной метод &md; <methodname>execCode()</methodname>.</para>
-	<methodsynopsis>
-	  <methodname>void ShellInterpreter::execCode(string commands)</methodname>
-	</methodsynopsis>
-	<para>Выполняет код, переданный с помощью строки <parameter>commands</parameter>.</para>
-
-	<para>Объект интерпретатора имеет список переменных (<varname>map&lt;string, string&gt; vars</varname>), заданных пользователем; функций (<varname>map&lt;string, string&gt; defs</varname>) </para>
-      </section>
-
-      <section>
-	<title>Класс-интерфейс <classname>ShellUser</classname> </title>
-	<para>Этот интерфейс реализуют (с помощью множественного наследования) классы, в которых присутствуют команды, выполняемые интерпретатором. Содержит всего один метод <methodname>onCommand</methodname>.</para>
-	<methodsynopsis>
-	  <methodname>virtual int onCommand(int cmdId, std::string &amp;command, std::list&lt;std::string&gt;</methodname>
-	</methodsynopsis>
-      </section>
-
-    </chapter>
-
-
 <!-- ************************************************************ -->
 <chapter id="mainclasses">
 <title>Основные классы, описывающие игровую ситуацию</title>
@@ -165,6 +144,58 @@
 </section>
 
 </chapter>
+
+
+&gui;
+
+<!-- ************************************************************ -->
+    <chapter id="shell">
+      <title>Встроенный интерпретатор</title>
+      <para>Встроенный интерпретатор (<filename>Shell.cpp</filename>, <filename>Shell.h</filename>) служит для выполнения команд, связывающих объекты внутри программы.</para>
+      <para>Интерпретатор устроен очень минималистически. Синтаксис прост: код, который необходимо выполнить, делится на строки, строки делятся на &lq;слова&rq;, первое слово считается именем команды, остальные &md; параметрами к ней.</para>
+      <para>Особое значение имеют фигурные скобки: <symbol>{</symbol> и <symbol>}</symbol>. Всё, что заключено между скобками, включая пробелы и переводы строки, считается одним параметром. Скобки могут быть вложенными.</para>
+      <example>
+	<title>Несколько команд</title>
+	<programlisting>
+menu Test 10 10
+m+ test1 foo
+m+ test2 bar
+menu_end
+</programlisting>
+      </example>
+      <para>В этом примере выполняется 4 команды. Например, первая
+	&md; menu, с 3 параметрами: Test, 10, 10.</para>
+      <example>
+	<title>Скобки</title>
+	<programlisting>def mysub {
+menu Test 10 10
+menu_end
+}</programlisting>
+      </example>
+      <para>В этом примере одна команда &md; def, имеет 3
+      параметра. Первый &md; &lq;mysub&rq;. Второй &md; то, что стоит между
+      фигурными скобками. Переводы строки внутри скобок сохраняются
+      как часть аргумента.</para>
+      <section>
+	<title>Класс <classname>ShellInterpreter</classname></title>
+	<para>Класс представляет собой собственно интерпретатор. Основной метод &md; <methodname>execCode()</methodname>.</para>
+	<methodsynopsis>
+	  <methodname>void ShellInterpreter::execCode(string commands)</methodname>
+	</methodsynopsis>
+	<para>Выполняет код, переданный с помощью строки <parameter>commands</parameter>.</para>
+
+	<para>Объект интерпретатора имеет список переменных (<varname>map&lt;string, string&gt; vars</varname>), заданных пользователем; функций (<varname>map&lt;string, string&gt; defs</varname>) </para>
+      </section>
+
+      <section>
+	<title>Класс-интерфейс <classname>ShellUser</classname> </title>
+	<para>Этот интерфейс реализуют (с помощью множественного наследования) классы, в которых присутствуют команды, выполняемые интерпретатором. Содержит всего один метод <methodname>onCommand</methodname>.</para>
+	<methodsynopsis>
+	  <methodname>virtual int onCommand(int cmdId, std::string &amp;command, std::list&lt;std::string&gt;</methodname>
+	</methodsynopsis>
+      </section>
+
+    </chapter>
 
 </part>
 
@@ -217,6 +248,10 @@
       </author>,
       <title>SDL Library Documentation</title>
     </bibliomixed>
+    <bibliomixed id="3">
+      <title>GNU Autoconf manual</title>
+    </bibliomixed>
+
   </bibliography>
 
 
