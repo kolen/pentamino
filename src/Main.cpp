@@ -26,7 +26,9 @@ Main::Main()
   initSDL();
   rootwindow.setDirty();
   rootwindow.setGameField(&gamefield);
-  shell->registerCommand(this, "exit", 0);
+
+  shell->registerCommand(this, "exit",       0);
+  shell->registerCommand(this, "fullscreen", 1);
 
   shell->execCode("exec default.cfg");
   shell->execCode("mainMenu");
@@ -102,14 +104,11 @@ int Main::initSDL()
     exit(1);
   }
 
-  /* Clean up on ex
   atexit(SDL_Quit);
-    
-  /*
-   * Initialize the display in a 640x480 8-bit palettized mode,
-   * requesting a software surface
-   */
-  screen = SDL_SetVideoMode(640, 480, 16, SDL_HWSURFACE|SDL_DOUBLEBUF);
+
+  
+  setVideoMode(640, 480, 16, 0, 0);
+  //  screen = SDL_SetVideoMode(640, 480, 16, SDL_HWSURFACE|SDL_DOUBLEBUF);
   if ( screen == NULL ) {
     cerr << "Couldn't set video mode: " << SDL_GetError() << endl;
     exit(1);
@@ -129,5 +128,15 @@ Main::onCommand(int cmdId, std::string &command, std::list<std::string> &args)
   if (cmdId == 0) { //Exit
     //FIXME:
     exit(0);
+  } else if (cmdId == 1) { //Fullscreen <n>
+    CHKARGS(1);
+    string mode;
+    mode=POPARG;
+    if (mode == "1")
+      setVideoMode(640, 480, 16, SDL_FULLSCREEN, 0);
+    else if (mode == "0")
+      setVideoMode(640, 480, 16, 0, 0);
+    else
+      cerr << "Usage: fullscreen <0|1>" << endl;
   }
 }
