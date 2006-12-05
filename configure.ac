@@ -14,10 +14,10 @@ AC_PROG_RANLIB
 
 # Checks for libraries.
 # FIXME: Replace `main' with a function in `-lSDL':
-AC_CHECK_LIB(SDL, SDL_Init)
+AC_CHECK_LIB(SDL, SDL_Init, ,AC_MSG_ERROR([libSDL not found! Please install SDL devel package!]))
 # FIXME: Replace `main' with a function in `-lpthread':
-AC_CHECK_LIB(pthread, pthread_create)
-AC_CHECK_LIB(SDL_image, IMG_Load)
+AC_CHECK_LIB(pthread, pthread_create, ,AC_MSG_ERROR([libpthread not found! Please install pthread devel package!]))
+AC_CHECK_LIB(SDL_image, IMG_Load, ,AC_MSG_ERROR([libSDL_Image not found! Please install SDL_Image devel package!]))
 
 
 
