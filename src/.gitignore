@@ -2,3 +2,5 @@
 Makefile
 pentamino
 semantic.cache
+*.o
+*.a
